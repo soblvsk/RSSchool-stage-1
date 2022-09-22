@@ -1,0 +1,354 @@
+.hero {
+  height: 386px;
+  width: 100%;
+  background-image: url('../../assets/images/Giant_Panda.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.pickAndFeed {
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 180px;
+  background: linear-gradient(
+      315.75deg,
+      rgba(254, 210, 144, 0.7) 30.06%,
+      #febdab 100.95%,
+      rgba(254, 210, 144, 0.7) 106.36%
+    ),
+    linear-gradient(
+      315.75deg,
+      rgba(254, 189, 171, 0.74) 30.06%,
+      rgba(243, 169, 248, 0.66) 50.74%,
+      #e0d8f0 80.49%,
+      #eaf7fe 127.9%,
+      #eaf7fe 149.54%
+    ),
+    linear-gradient(
+      315.75deg,
+      rgba(254, 189, 171, 0.74) 30.06%,
+      rgba(243, 169, 248, 0.66) 50.74%,
+      #e0d8f0 80.49%,
+      #eaf7fe 127.9%,
+      #eaf7fe 149.54%
+    );
+}
+
+.pickAndFeed__h3 {
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.pickAndFeed__descr {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 46px;
+}
+
+.pickAndFeed__h3Sub {
+  color: #fe9013;
+  margin-bottom: 59px;
+}
+
+.pickAndFeed__content {
+  padding: 40px 92px 60px;
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+}
+
+.pickAndFeed__h2 {
+  color: #fe9013;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pickAndFeed__subtitle {
+  margin-bottom: 60px;
+}
+
+.pickAndFeed__pet {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 44px;
+}
+
+.pickAndFeed__pet-block {
+  display: flex;
+  justify-content: space-between;
+  max-width: 532px;
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 215px;
+  margin-right: 229px;
+}
+
+.pickAndFeed__pet-count {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.pickAndFeed__count {
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 80%;
+  text-transform: uppercase;
+  margin-bottom: 11px;
+  margin-top: 52px;
+}
+
+.pickAndFeed__pet-x {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 12px;
+  margin-right: 64px;
+}
+
+.pickAndFeed__amount-descr {
+  margin-bottom: 17px;
+}
+
+.pickAndFeed__amount {
+  margin-bottom: 98px;
+}
+
+.pickAndFeed__amout-bar {
+  position: relative;
+  display: flex;
+  height: 27px;
+  width: 100%;
+  background: #404950;
+  border-radius: 2px;
+  padding-right: 30px;
+  padding-left: 27px;
+  align-items: center;
+}
+
+.pickAndFeed__amount-line {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background: #72828e;
+}
+
+.pickAndFeed__amount-list {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -5px;
+  width: 100%;
+}
+
+.pickAndFeed__amount-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.pickAndFeed__amount-item:hover.pickAndFeed__amount-item::before {
+  content: url('../../assets/icons/roller_icon.svg');
+  position: absolute;
+  top: -15px;
+}
+
+.pickAndFeed__circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background-color: #ffee2e;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.pickAndFeed__amount-item::after {
+  position: absolute;
+  top: 35px;
+  left: -29px;
+  content: attr(data-number);
+  font-weight: 500;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.pickAndFeed__amount-active.pickAndFeed__amount-item::before {
+  content: url('../../assets/icons/roller_icon.svg');
+  position: absolute;
+  top: -15px;
+}
+
+.pickAndFeed__amount-active.pickAndFeed__amount-item::after {
+  color: #fe9013;
+}
+
+.pickAndFeed__price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-right: 20px;
+}
+
+.pickAndFeed__price-num {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 140%;
+  text-transform: uppercase;
+  color: #333b41;
+}
+.pickAndFeed__amount-form {
+  display: flex;
+  margin-bottom: 26px;
+}
+
+.pickAndFeed__form {
+  position: relative;
+  margin: 0 auto;
+}
+
+.pickAndFeed__amount-dollar {
+  position: absolute;
+  top: 17px;
+  right: 10px;
+}
+
+.pickAndFeed__amount-dollar svg path {
+  fill: #929699;
+}
+
+.pickAndFeed__amount-input {
+  width: 268px;
+  height: 54px;
+  padding: 0 10px;
+  outline: none;
+  border: 1px solid #929699;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  color: #929699;
+}
+
+.pickAndFeed__amount-input:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #333b41;
+  border: 1px solid #ffee2e;
+}
+
+.pickAndFeed__amount-input:hover + .pickAndFeed__amount-dollar svg path {
+  fill: #ffffff;
+}
+
+.pickAndFeed__amount-input:focus {
+  border: 1px solid #4b9200;
+  background-color: transparent;
+  color: #4b9200;
+}
+
+.pickAndFeed__amount-input:invalid {
+  color: #d31414;
+  border: 1px solid #d31414;
+  background-color: transparent;
+}
+
+.pickAndFeed__amount-input:focus + .pickAndFeed__amount-dollar svg path {
+  fill: #4b9200;
+}
+
+.pickAndFeed__amount-input:invalid + .pickAndFeed__amount-dollar svg path {
+  fill: #d31414;
+}
+
+input[type='number'] {
+  padding-right: 30px;
+  -moz-appearance: textfield;
+  background-color: transparent;
+}
+
+.pickAndFeed__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pickAndFeed__bottom-radios {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  margin-bottom: 32px;
+}
+
+.checkbox {
+  position: relative;
+  margin-left: 9px;
+}
+
+.checkbox:hover {
+  cursor: pointer;
+}
+
+.pickAndFeed__bottom-radio {
+  /* border: 1px solid #fe9013;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px; */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.pickAndFeed__bottom-circle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #e47209;
+  border-radius: 50%;
+  margin-left: -25px;
+  top: 2px;
+}
+
+.pickAndFeed__bottom-radio:checked + .pickAndFeed__bottom-circle {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-color: #4b9200;
+  border: 1px solid #4b9200;
+  position: absolute;
+}
+
+.pickAndFeed__bottom-radio:hover {
+  cursor: pointer;
+}
+
+.pickAndFeed__bottom-radio:focus,
+.pickAndFeed__bottom-radio:checked {
+  outline: none;
+  background-color: #4b9200;
+}
+
+.pickAndFeed__bottom-text {
+  /* margin: 0 50px 0 10px; */
+}
+
+.pickAndFeed__bottom-descr {
+  text-align: center;
+  margin-top: 31px;
+}
