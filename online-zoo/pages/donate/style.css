@@ -140,13 +140,17 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  top: -5px;
-  width: 100%;
+  top: -20px;
+  left: -16px;
+  width: 950px;
 }
 
 .pickAndFeed__amount-item {
   position: relative;
   display: flex;
+  width: 40px;
+  height: 40px;
+
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -157,7 +161,9 @@
 .pickAndFeed__amount-item:hover.pickAndFeed__amount-item::before {
   content: url('../../assets/icons/roller_icon.svg');
   position: absolute;
-  top: -15px;
+}
+.pickAndFeed__amount-item:hover.pickAndFeed__amount-item::after {
+  color: #fe9013;
 }
 
 .pickAndFeed__circle {
@@ -174,8 +180,8 @@
 
 .pickAndFeed__amount-item::after {
   position: absolute;
-  top: 35px;
-  left: -29px;
+  top: 50px;
+  left: -14px;
   content: attr(data-number);
   font-weight: 500;
   font-size: 26px;
@@ -185,7 +191,6 @@
 .pickAndFeed__amount-active.pickAndFeed__amount-item::before {
   content: url('../../assets/icons/roller_icon.svg');
   position: absolute;
-  top: -15px;
 }
 
 .pickAndFeed__amount-active.pickAndFeed__amount-item::after {
@@ -301,13 +306,6 @@ input[type='number'] {
 }
 
 .pickAndFeed__bottom-radio {
-  /* border: 1px solid #fe9013;
-  border-radius: 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px; */
   position: absolute;
   width: 1px;
   height: 1px;
@@ -351,4 +349,53 @@ input[type='number'] {
 .pickAndFeed__bottom-descr {
   text-align: center;
   margin-top: 31px;
+}
+
+@media (max-width: 1160px) {
+  .hero {
+    height: 390px;
+    background-image: url(../../assets/images/panda_bg_1000px.jpg);
+  }
+  .pickAndFeed {
+    padding-bottom: 28px;
+  }
+  .pickAndFeed__h3 {
+    width: 778px;
+    margin-bottom: 30px;
+  }
+  .pickAndFeed__h3Sub {
+    margin-bottom: 39px;
+  }
+  .pickAndFeed__content {
+    padding: 20px 44px 46px 47px;
+  }
+  .pickAndFeed__h2 {
+    width: 833px;
+    margin-bottom: 11px;
+  }
+  .pickAndFeed__pet-block {
+    margin-left: 203px;
+    margin-right: 221px;
+  }
+  .pickAndFeed__pet-count {
+    width: 159px;
+  }
+  .pickAndFeed__amount-descr {
+    margin-left: 18px;
+  }
+  .pickAndFeed__amout-bar {
+    margin-left: 18px;
+    padding-left: 12px;
+    padding-right: 15px;
+    width: 810px;
+  }
+  .pickAndFeed__amount-list {
+    width: 820px;
+  }
+  .pickAndFeed__amount-item[data-number='$5000'] {
+    display: none;
+  }
+  .pickAndFeed__amount-item::after {
+    left: 2px;
+  }
 }
