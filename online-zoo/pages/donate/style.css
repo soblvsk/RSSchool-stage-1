@@ -188,12 +188,12 @@
   text-transform: uppercase;
 }
 
-.pickAndFeed__amount-active.pickAndFeed__amount-item::before {
+.pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
   content: url('../../assets/icons/roller_icon.svg');
   position: absolute;
 }
 
-.pickAndFeed__amount-active.pickAndFeed__amount-item::after {
+.pickAndFeed__amount-item_active.pickAndFeed__amount-item::after {
   color: #fe9013;
 }
 
@@ -351,13 +351,14 @@ input[type='number'] {
   margin-top: 31px;
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 1220px) {
   .hero {
     height: 390px;
     background-image: url(../../assets/images/panda_bg_1000px.jpg);
+    background-position: -172px;
   }
   .pickAndFeed {
-    padding-bottom: 28px;
+    padding-bottom: 30px;
   }
   .pickAndFeed__h3 {
     width: 778px;
@@ -367,7 +368,7 @@ input[type='number'] {
     margin-bottom: 39px;
   }
   .pickAndFeed__content {
-    padding: 20px 44px 46px 47px;
+    padding: 20px 44px 44px 47px;
   }
   .pickAndFeed__h2 {
     width: 833px;
@@ -397,5 +398,231 @@ input[type='number'] {
   }
   .pickAndFeed__amount-item::after {
     left: 2px;
+  }
+  .footer__donate .footer__nav {
+    margin: 0 62px 9px 180px;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero {
+    height: 335px;
+    background-position: -273px;
+  }
+  .pickAndFeed {
+    padding-top: 31px;
+    padding-bottom: 46px;
+  }
+  .pickAndFeed__h3 {
+    width: 600px;
+    font-size: 24px;
+    line-height: 120%;
+    margin-bottom: 19px;
+  }
+  .pickAndFeed__descr {
+    margin-bottom: 29px;
+  }
+  .pickAndFeed__h3Sub {
+    margin-bottom: 29px;
+  }
+  .pickAndFeed__content {
+    padding: 30px 0 29px 0;
+  }
+  .pickAndFeed__h2 {
+    width: 463px;
+    margin-left: 69px;
+    margin-bottom: 22px;
+  }
+  .pickAndFeed__subtitle {
+    text-align: center;
+    margin-bottom: 49px;
+  }
+  .pickAndFeed__pet {
+    margin-bottom: 36px;
+  }
+  .pickAndFeed__amount-descr {
+    margin-left: 10px;
+    margin-bottom: 7px;
+  }
+  .pickAndFeed__amout-bar {
+    margin-left: 0;
+    width: 600px;
+  }
+  .pickAndFeed__amount-item[data-number='$2000'],
+  .pickAndFeed__amount-item[data-number='$1000'] {
+    display: none;
+  }
+  .pickAndFeed__amout-bar {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  .pickAndFeed__amount-list {
+    width: 561px;
+  }
+  .pickAndFeed__amount-item[data-number='$100'].pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item[data-number='$100'].pickAndFeed__amount-item::after {
+    color: #fe9013;
+  }
+  .pickAndFeed__amount-item:after {
+    left: -6px;
+  }
+  .pickAndFeed__amount-form {
+    margin-bottom: 33px;
+  }
+  .pickAndFeed__amount-input {
+    width: 180px;
+    height: 42px;
+    padding: 0 5px;
+  }
+  .pickAndFeed__amount-dollar {
+    top: 11px;
+  }
+  .pickAndFeed__bottom-radios {
+    margin-bottom: 31px;
+  }
+  .footer__donate {
+    padding: 13px 0 2px;
+  }
+  .footer__donate .footer__body {
+    margin-bottom: 32px;
+  }
+  .footer__donate .footer__nav {
+    margin: 0 62px 10px 0px;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero {
+    height: 187px;
+    background-position: -149px;
+  }
+  .pickAndFeed {
+    padding-bottom: 21px;
+  }
+  .pickAndFeed__h3 {
+    width: 300px;
+  }
+  .pickAndFeed__descr {
+    margin-bottom: 26px;
+  }
+  .pickAndFeed__h3Sub {
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .pickAndFeed__content {
+    padding: 21px 0 18px 0;
+  }
+  .pickAndFeed__h2 {
+    width: 232px;
+    font-size: 24px;
+    margin-left: 34px;
+    margin-bottom: 10px;
+  }
+  .pickAndFeed__subtitle {
+    font-size: 16px;
+    line-height: 140%;
+    margin-bottom: 9px;
+  }
+  .pickAndFeed__pet {
+    margin-bottom: 0;
+  }
+  .pickAndFeed__pet-count {
+    justify-content: start;
+    margin-right: 32px;
+  }
+  .pickAndFeed__pet-block {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .pickAndFeed__pet-count .font {
+    font-size: 9px;
+  }
+  .pickAndFeed__count {
+    font-size: 40px;
+    margin-bottom: 9px;
+    margin-top: 59px;
+  }
+  .pickAndFeed__pet-icon svg {
+    width: 160px;
+    height: 139px;
+  }
+  .pickAndFeed__pet-x svg {
+    width: 8px;
+  }
+  .pickAndFeed__pet-x {
+    margin-right: 10px;
+    top: 5px;
+    right: 26px;
+  }
+  .pickAndFeed__amount {
+    margin-bottom: 50px;
+  }
+  .pickAndFeed__amount-descr {
+    margin-left: 0;
+  }
+  .pickAndFeed__amout-bar {
+    height: 13px;
+    width: 300px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .pickAndFeed__amount-list {
+    width: 280px;
+    left: -11px;
+    top: -9px;
+  }
+  .pickAndFeed__circle {
+    width: 5px;
+    height: 5px;
+  }
+  .pickAndFeed__amount-item {
+    width: 20px;
+    height: 20px;
+  }
+  .pickAndFeed__amount-item.pickAndFeed__amount-item::after {
+    font-size: 13px;
+    top: 35px;
+    left: 8px;
+  }
+  .pickAndFeed__amount-item.pickAndFeed__amount-item::after {
+    font-size: 13px;
+    top: 26px;
+    left: -2px;
+  }
+  .pickAndFeed__amount-item[data-number='$100'].pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon-mobile.svg');
+    top: 0;
+    left: 1px;
+  }
+  .pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon-mobile.svg');
+    top: 0;
+    left: 1px;
+  }
+  .pickAndFeed__amount-form {
+    margin-bottom: 27px;
+  }
+  .pickAndFeed__bottom-radios {
+    margin-bottom: 29px;
+  }
+  .pickAndFeed__bottom-descr {
+    text-align: start;
+    width: 301px;
+  }
+  .footer__donate {
+    padding: 6px 0 20px;
+  }
+
+  .footer__donate .footer__body {
+    justify-content: center;
+    margin-bottom: 71px;
+  }
+  .footer__donate .footer__nav {
+    margin: 0;
+    margin-top: 80px;
+    margin-left: 11px;
   }
 }
