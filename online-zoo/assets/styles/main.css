@@ -11,9 +11,6 @@ html {
 }
 
 body {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
   background-color: #ffffff;
   min-width: 320px;
   min-height: 100vh;
@@ -449,7 +446,7 @@ section {
   line-height: 130%;
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 1220px) {
   .header__container,
   .page__container,
   .footer__container {
@@ -459,29 +456,24 @@ section {
   .nav-list {
     gap: 48px;
   }
-
-  /* .footer__logo {
-    margin-left: 14px;
-  } */
+  .footer {
+    padding: 40px 0 40px;
+  }
   .subscribe {
     margin-right: 33px;
   }
-  /* .footer__btn {
-    margin-left: 14px;
-  } */
-  /* .footer__bottom {
-    margin-left: 14px;
-  } */
+  .footer__bottom {
+    margin-top: 43px;
+  }
   .footer__nav {
-    /* margin: 0 87px 9px 180px; */
-    margin: 0 62px 9px 180px;
+    margin: 0 62px 9px 155px;
   }
   .footer__copy {
     white-space: nowrap;
   }
 }
 
-@media (max-width: 941px) {
+@media (max-width: 980px) {
   .header__container,
   .page__container,
   .footer__container {
@@ -516,5 +508,94 @@ section {
   }
   .btn-icon {
     display: block;
+  }
+  .footer {
+    padding: 12px 0 1px;
+  }
+  .subscribe {
+    display: none;
+  }
+  .footer__body {
+    margin-bottom: 33px;
+  }
+  .footer__bottom {
+    margin-top: 68px;
+  }
+  .footer__social {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+  }
+  .social__footer-item {
+    margin-bottom: 20px;
+  }
+  .social__footer-title {
+    display: none;
+  }
+  .footer__nav {
+    margin: 0 62px 11px 0;
+  }
+  .footer__nav .nav-list {
+    gap: 37px;
+  }
+}
+
+@media (max-width: 639px) {
+  .header__container,
+  .page__container,
+  .footer__container {
+    width: 300px;
+  }
+  .btn-icon {
+    top: 12px;
+    right: 10px;
+  }
+  .footer {
+    padding: 6px 0 19px;
+  }
+  .footer__body {
+    justify-content: center;
+    margin-bottom: 71px;
+  }
+  .footer-logo__link {
+    border: none;
+    border-radius: 0;
+    margin-right: 0;
+    width: 128px;
+  }
+  .footer-logo__icon {
+    top: 12px;
+    left: 72px;
+    right: 0;
+  }
+  .footer__social {
+    display: flex;
+    top: 73px;
+    right: 33px;
+  }
+  .social__footer-item {
+    margin-bottom: 0;
+    margin-right: 18px;
+  }
+  .footer__bottom {
+    margin-top: 29px;
+  }
+  .footer__nav {
+    margin: 0;
+    margin-top: 80px;
+    margin-left: 11px;
+  }
+  .footer__nav .nav-list {
+    gap: 30px;
+  }
+  .footer__copy {
+    position: absolute;
+    right: 9px;
+    top: 213px;
+  }
+  .footer__copy-descr {
+    font-size: 15px;
+    line-height: 120%;
+    margin-bottom: 13px;
   }
 }
