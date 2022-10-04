@@ -406,6 +406,7 @@ input[type='number'] {
 
 @media (max-width: 980px) {
   .hero {
+    margin-top: 34px;
     height: 335px;
     background-position: -273px;
   }
