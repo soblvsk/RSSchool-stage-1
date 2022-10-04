@@ -19,6 +19,11 @@ body {
   color: #000000;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 a {
   text-decoration: none;
   color: inherit;
