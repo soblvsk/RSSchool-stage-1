@@ -479,6 +479,8 @@ section {
     width: 600px;
   }
   .header {
+    position: fixed;
+    z-index: 10;
     height: 34px;
   }
   .header__body {
