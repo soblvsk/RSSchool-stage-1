@@ -151,8 +151,7 @@ section {
 .btn-icon {
   display: none;
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: -2px;
   width: 18px;
   height: 10px;
   cursor: pointer;
