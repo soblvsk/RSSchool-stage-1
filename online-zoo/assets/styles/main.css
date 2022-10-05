@@ -151,7 +151,8 @@ section {
 .btn-icon {
   display: none;
   position: absolute;
-  top: -2px;
+  top: 11px;
+  right: 20px;
   width: 18px;
   height: 10px;
   cursor: pointer;
@@ -196,8 +197,12 @@ section {
   cursor: default;
 }
 
+.overlay {
+  display: none;
+}
+
 .header {
-  height: 80px;
+  min-height: 80px;
   width: 100%;
   background-color: #000000;
   backdrop-filter: blur(2px);
@@ -276,6 +281,11 @@ section {
   background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.nav-item__logo,
+.nav-item__copy {
+  display: none;
 }
 
 .header-copy {
@@ -485,7 +495,7 @@ section {
   .header {
     position: fixed;
     z-index: 10;
-    height: 34px;
+    min-height: 34px;
   }
   .header__body {
     padding: 3px 0;
@@ -510,6 +520,73 @@ section {
   .header__main,
   .header-copy {
     display: none;
+  }
+  .nav-item__logo,
+  .nav-item__copy {
+    display: block;
+  }
+  .header__main {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 220px;
+    height: 253px;
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    transition: 0.95s all;
+  }
+
+  .header__main-activ {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin: 0;
+    gap: 15px;
+  }
+  .nav-item__logo .header-logo__link {
+    width: 65.6px;
+    height: 41.6px;
+    border: 1px solid #fe9013;
+  }
+  .nav-item__logo .header-logo__title {
+    color: #fe9013;
+  }
+  .nav-item__logo .header-logo__icon {
+    width: 13px;
+    height: 13px;
+    top: 18px;
+    left: 8px;
+  }
+  .nav-link {
+    background-color: #333b41;
+  }
+  .header__main-close {
+    padding: 10px;
+  }
+  .overlay-activ {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99;
   }
   .btn-icon {
     display: block;
