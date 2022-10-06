@@ -572,7 +572,7 @@ section {
     top: 18px;
     left: 8px;
   }
-  .nav-link {
+  .header__main-activ .nav-link {
     background-color: #333b41;
   }
   .header__main-close {
