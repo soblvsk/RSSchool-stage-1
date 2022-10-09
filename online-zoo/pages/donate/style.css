@@ -158,14 +158,6 @@
   cursor: pointer;
 }
 
-.pickAndFeed__amount-item:hover.pickAndFeed__amount-item::before {
-  content: url('../../assets/icons/roller_icon.svg');
-  position: absolute;
-}
-.pickAndFeed__amount-item:hover.pickAndFeed__amount-item::after {
-  color: #fe9013;
-}
-
 .pickAndFeed__circle {
   display: inline-block;
   width: 10px;
@@ -192,7 +184,6 @@
   content: url('../../assets/icons/roller_icon.svg');
   position: absolute;
 }
-
 .pickAndFeed__amount-item_active.pickAndFeed__amount-item::after {
   color: #fe9013;
 }
@@ -276,12 +267,6 @@
   fill: #d31414;
 }
 
-input[type='number'] {
-  padding-right: 30px;
-  -moz-appearance: textfield;
-  background-color: transparent;
-}
-
 .pickAndFeed__bottom {
   display: flex;
   flex-direction: column;
@@ -343,7 +328,6 @@ input[type='number'] {
 }
 
 .pickAndFeed__bottom-text {
-  /* margin: 0 50px 0 10px; */
 }
 
 .pickAndFeed__bottom-descr {
@@ -404,6 +388,23 @@ input[type='number'] {
   }
 }
 
+@media (min-width: 981px) {
+  /* .pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item_active.pickAndFeed__amount-item::after {
+    color: #fe9013;
+  } */
+  .pickAndFeed__amount-item:hover.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item:hover.pickAndFeed__amount-item::after {
+    color: #fe9013;
+  }
+}
+
 @media (max-width: 980px) {
   .hero {
     margin-top: 34px;
@@ -453,19 +454,20 @@ input[type='number'] {
   .pickAndFeed__amount-item[data-number='$1000'] {
     display: none;
   }
+  /* .pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item_active.pickAndFeed__amount-item::after {
+    color: #fe9013;
+  } */
+
   .pickAndFeed__amout-bar {
     padding-left: 35px;
     padding-right: 35px;
   }
   .pickAndFeed__amount-list {
     width: 561px;
-  }
-  .pickAndFeed__amount-item[data-number='$100'].pickAndFeed__amount-item::before {
-    content: url('../../assets/icons/roller_icon.svg');
-    position: absolute;
-  }
-  .pickAndFeed__amount-item[data-number='$100'].pickAndFeed__amount-item::after {
-    color: #fe9013;
   }
   .pickAndFeed__amount-item:after {
     left: -6px;
@@ -593,16 +595,16 @@ input[type='number'] {
     top: 26px;
     left: -2px;
   }
-  .pickAndFeed__amount-item[data-number='$100'].pickAndFeed__amount-item::before {
+  .pickAndFeed__amount-item_active:hover.pickAndFeed__amount-item::before {
     content: url('../../assets/icons/roller_icon-mobile.svg');
-    top: 0;
-    left: 1px;
+    position: absolute;
   }
   .pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
     content: url('../../assets/icons/roller_icon-mobile.svg');
     top: 0;
     left: 1px;
   }
+
   .pickAndFeed__amount-form {
     margin-bottom: 27px;
   }
