@@ -698,7 +698,6 @@ const slideMove = () => {
   console.log('TESTIMONIALS BLOCK');
   console.log('__________________________');
   console.log('Value ' + newValue);
-  console.log(IMGWIDTH + ' ' + GAP);
   TESTIMONIALS.scrollTo((IMGWIDTH + GAP) * INPUT.value, 0);
 };
 INPUT.addEventListener('input', slideMove);
@@ -735,11 +734,6 @@ OVERLAY.addEventListener('click', () => {
   OPEN_POPUP.classList.remove('popup-activ');
   OVERLAY.classList.remove('overlay-activ');
 });
-
-// window.addEventListener('resize', function () {
-//   console.log('Размер окна изменен');
-//   WINDOWIDTH = window.innerWidth;
-// });
 
 if (window.innerWidth <= 1220) {
   TESTIMONIALS.addEventListener('click', openPopup);
