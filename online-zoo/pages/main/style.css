@@ -571,6 +571,10 @@
   z-index: -1;
 }
 
+.testimonials__close {
+  display: none;
+}
+
 @media (max-width: 1220px) {
   .watch {
     height: 504px;
@@ -989,6 +993,9 @@
   }
   .testimonials__popup .testimonials__descr {
     max-height: 309px;
+  }
+  .popup-activ .testimonials__close {
+    display: block;
   }
   .testimonials__close {
     cursor: pointer;
