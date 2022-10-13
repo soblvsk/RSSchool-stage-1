@@ -25,11 +25,14 @@ overlay.addEventListener('click', () => {
 // INPUT
 const input = document.querySelector('.pickAndFeed__amount-input');
 input.value = 100;
+
 input.addEventListener('input', () => {
   // INPUT NUMBER AND ADD ACTIVE DOT
   for (let i = 0; i < dot.length; i++) {
     dot[i].classList.remove('pickAndFeed__amount-item_active');
-    if (dot[i].dataset.number.slice(1) == input.value) {
+    if (dot[i].dataset.number.slice(1) === input.value) {
+      dot[i].classList.add('pickAndFeed__amount-item_active');
+    } else if (dot[i].dataset.number.slice(1) === input.value.substr(0, 4)) {
       dot[i].classList.add('pickAndFeed__amount-item_active');
     }
   }
