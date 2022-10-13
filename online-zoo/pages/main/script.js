@@ -708,16 +708,19 @@ const OPEN_POPUP = document.querySelector('.popup');
 const POPUP = document.querySelector('.testimonials__popup');
 const CLOSE_POPUP = document.querySelector('.testimonials__close');
 const OVERLAY = document.querySelector('.testimonials').querySelector('.overlay');
+let WIDTH_TESTIMONIALS = window.innerWidth;
 
 const openPopup = (event) => {
-  let element = event.target.closest('.testimonials__card');
-  if (element && element.classList.contains('testimonials__card')) {
-    document.body.style.overflow = 'hidden';
-    OPEN_POPUP.classList.add('popup-activ');
-    OVERLAY.classList.add('overlay-activ');
+  if (WIDTH_TESTIMONIALS <= 980) {
+    let element = event.target.closest('.testimonials__card');
+    if (element && element.classList.contains('testimonials__card')) {
+      document.body.style.overflow = 'hidden';
+      OPEN_POPUP.classList.add('popup-activ');
+      OVERLAY.classList.add('overlay-activ');
 
-    const cardPopup = element.cloneNode(true);
-    POPUP.appendChild(cardPopup);
+      const cardPopup = element.cloneNode(true);
+      POPUP.appendChild(cardPopup);
+    }
   }
 };
 
@@ -735,6 +738,8 @@ OVERLAY.addEventListener('click', () => {
   OVERLAY.classList.remove('overlay-activ');
 });
 
-if (window.innerWidth <= 1220) {
-  TESTIMONIALS.addEventListener('click', openPopup);
-}
+window.addEventListener('resize', () => {
+  WIDTH_TESTIMONIALS = window.innerWidth;
+});
+
+TESTIMONIALS.addEventListener('click', openPopup);
