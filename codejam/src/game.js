@@ -57,6 +57,10 @@ export default class Game {
       }
       this.timer__value = `${min}:${sec}`;
       this.time = Number(timing);
+
+      this.page();
+      this.createItemPuzzle();
+      this.basicGame();
     } else {
       this.count = 0;
       let timing = 0;
@@ -75,12 +79,18 @@ export default class Game {
       }
       this.timer__value = `${min}:${sec}`;
       this.time = Number(timing);
+
+      this.page();
+      this.createItemPuzzle();
+
+      const button1 = document.querySelectorAll('.app__button')[0];
+      const button2 = document.querySelectorAll('.app__button')[1];
+      button1.disabled = true;
+      button2.disabled = false;
+
+      this.startTimer();
+      this.startGame();
     }
-
-    this.page();
-    this.createItemPuzzle();
-
-    this.basicGame();
 
     if (storagePuzzle) {
       this.matrix = storagePuzzle;
