@@ -241,12 +241,6 @@ table {
     font-weight: 900;
     font-size: 18px;
     transition: all 0.2s;
-
-    @media screen and (min-width: 950px) {
-      &:hover {
-        background: rgb(224, 224, 224);
-      }
-    }
   }
 }
 
