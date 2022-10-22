@@ -690,7 +690,6 @@ export default class Game {
       this.res[`${this.size}X${this.size}`] = [res];
     }
     this.setLocalStorage('results', this.res);
-    this.deleteLocalStorage('puzzles');
     this.deleteLocalStorage('steps');
     this.deleteLocalStorage('time');
   }
@@ -879,5 +878,6 @@ export default class Game {
       modal.remove();
       overlay.remove();
     });
+    this.deleteLocalStorage('puzzles');
   }
 }
