@@ -15,6 +15,7 @@ export default class Game {
     this.puzzles = null;
 
     this.matrix = null;
+    this.drag = null;
 
     this.res = this.getLocalStorage('results') || {};
 
@@ -39,9 +40,6 @@ export default class Game {
     if (storagePuzzle && storageTime && storageCount) {
       this.count = storageCount;
       let timing = storageTime;
-
-      // this.count = this.getLocalStorage('steps') ?? 0;
-      // let timing = this.getLocalStorage('time') ?? '0';
 
       let min = Math.floor(Number(timing) / 60);
       let sec = Math.floor(Number(timing) % 60);
@@ -102,20 +100,16 @@ export default class Game {
     let matrix = this.basicGame();
     this.createGame(matrix);
 
-    this.puzzles.onclick = (event) => {
-      if (!event.target.classList.contains('app__puzzles-item')) {
-        return;
-      }
-      this.swapPuzzle(event);
-      this.swapCheck();
-    };
+    this.clickPuzzles(true);
+    this.dragAndDrop(true);
   }
 
   basicGame() {
     this.node = Array.from(this.puzzles.querySelectorAll('.app__puzzles-item'));
     let matrix = this.getArray(this.node.map((item) => Number(item.dataset.id)));
     this.setPositionArray(matrix);
-    this.node[Math.pow(this.size, 2) - 1].style.display = 'none';
+    this.node[Math.pow(this.size, 2) - 1].style.opacity = '0';
+    this.node[Math.pow(this.size, 2) - 1].style.cursor = 'auto';
     return matrix;
   }
 
@@ -125,6 +119,8 @@ export default class Game {
     this.puzzles.innerHTML = '';
     this.createItemPuzzle();
     this.basicGame();
+    this.clickPuzzles(false);
+    this.dragAndDrop(false);
   }
 
   clearGame() {
@@ -263,6 +259,59 @@ export default class Game {
     }
   }
 
+  // DRAG AND DROP PUZZLES
+  dragAndDrop(isDrag) {
+    if (isDrag) {
+      this.puzzles.ondragstart = (event) => {
+        if (event.target.dataset.id !== `${Math.pow(this.size, 2)}`) {
+          this.drag = event;
+        } else {
+          this.drag = null;
+        }
+      };
+
+      this.puzzles.ondragover = (event) => {
+        event.preventDefault();
+      };
+
+      this.puzzles.ondrop = (event) => {
+        if (event.target.dataset.id === `${Math.pow(this.size, 2)}` && this.drag !== null) {
+          this.swapPuzzle(this.drag);
+          this.swapCheck();
+        }
+      };
+    } else {
+      this.puzzles.ondragover = (event) => {
+        event.preventDefault();
+      };
+
+      this.puzzles.ondrop = (event) => {
+        return;
+      };
+    }
+  }
+
+  // CLICK
+  clickPuzzles(isClick) {
+    if (isClick) {
+      this.puzzles.onclick = (event) => {
+        if (!event.target.classList.contains('app__puzzles-item')) {
+          return;
+        }
+        if (event.target.dataset.id !== `${Math.pow(this.size, 2)}`) {
+          this.swapPuzzle(event);
+          this.swapCheck();
+        }
+      };
+    } else {
+      this.puzzles.onclick = (event) => {
+        if (!event.target.classList.contains('app__puzzles-item')) {
+          return;
+        }
+      };
+    }
+  }
+
   // CHANGE SIZES PUZZLES
   changeSizes(size) {
     this.size = size;
@@ -278,19 +327,15 @@ export default class Game {
 
   // CREATE ITEM PUZZLE
   createItemPuzzle() {
-    // let massiv = [];
-
     for (let i = 1; i < Math.pow(this.size, 2) + 1; i++) {
-      // massiv.push(i);
       const div = document.createElement('div');
       div.classList.add('app__puzzles-item');
       div.setAttribute('style', `width: calc(100%/${this.size}); height:calc(100%/${this.size});`);
+      div.setAttribute('draggable', `true`);
       div.dataset.id = `${i}`;
       div.textContent = `${i}`;
       this.puzzles.append(div);
     }
-
-    // this.matrix = massiv;
   }
 
   // CREATE ITEM WITH TEXT
@@ -352,13 +397,8 @@ export default class Game {
         clearInterval(this.interval);
         this.interval = null;
         this.startTimer();
-        this.puzzles.onclick = (event) => {
-          if (!event.target.classList.contains('app__puzzles-item')) {
-            return;
-          }
-          this.swapPuzzle(event);
-          this.swapCheck();
-        };
+        this.clickPuzzles(true);
+        this.dragAndDrop(true);
       } else {
         this.timer__value.textContent = '00:00';
         this.time = 0;
@@ -379,22 +419,14 @@ export default class Game {
         btn__start.textContent = 'Shuffle and start';
         btn__stop.textContent = 'Continue';
         setDisable([btn__start, btn__save, btn__result], false);
-        this.puzzles.onclick = (event) => {
-          if (!event.target.classList.contains('app__puzzles-item')) {
-            return;
-          }
-        };
+        this.clickPuzzles(false);
+        this.dragAndDrop(false);
       } else {
         this.startTimer();
         btn__stop.textContent = 'Stop';
         setDisable([btn__start, btn__save, btn__result], true);
-        this.puzzles.onclick = (event) => {
-          if (!event.target.classList.contains('app__puzzles-item')) {
-            return;
-          }
-          this.swapPuzzle(event);
-          this.swapCheck();
-        };
+        this.clickPuzzles(true);
+        this.dragAndDrop(true);
       }
     });
 
@@ -822,6 +854,8 @@ export default class Game {
 
   // MODAL FINISH GAME
   finishGame() {
+    this.clickPuzzles(false);
+    this.dragAndDrop(false);
     document.body.style.overflow = 'hidden';
     const overlay = document.createElement('div');
     overlay.classList.add('app__overlay');
