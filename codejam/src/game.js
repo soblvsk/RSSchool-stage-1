@@ -37,6 +37,7 @@ export default class Game {
     const storagePuzzle = this.getLocalStorage('puzzles');
     const storageTime = this.getLocalStorage('time');
     const storageCount = this.getLocalStorage('steps');
+
     if (storagePuzzle && storageTime && storageCount) {
       this.count = storageCount;
       let timing = storageTime;
@@ -722,8 +723,10 @@ export default class Game {
       this.res[`${this.size}X${this.size}`] = [res];
     }
     this.setLocalStorage('results', this.res);
-    this.deleteLocalStorage('steps');
-    this.deleteLocalStorage('time');
+    if (win === true) {
+      this.deleteLocalStorage('steps');
+      this.deleteLocalStorage('time');
+    }
   }
 
   // MODAL RESULTS
