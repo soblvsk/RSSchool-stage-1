@@ -64,7 +64,6 @@ export const galleryApp = () => {
       audio.currentTime = 0;
     }
     if (isPlay) {
-      console.log(audio.currentTime);
       const curentDuration = audio.duration;
 
       let audioDuration;

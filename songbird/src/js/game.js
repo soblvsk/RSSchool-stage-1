@@ -27,14 +27,14 @@ const quizTimeTrack = document.querySelector('.quiz-progress__track');
 const secretMute = document.querySelector('.secret-volume__mute');
 const secretVolumeLevel = document.querySelector('.secret-volume__level');
 
-const audio = new Audio();
+const audioBirdQuest = new Audio();
 const audioCard = new Audio();
 let secretIsPlay = false;
 let cardIsPlay = false;
 
-audio.volume = 0.7;
+audioBirdQuest.volume = 0.7;
 audioCard.volume = 0.7;
-let secretCurrentLevelVolume = audio.volume;
+let secretCurrentLevelVolume = audioBirdQuest.volume;
 
 const audioCheck = (src) => {
   const checkAudio = new Audio(src);
@@ -46,11 +46,11 @@ const audioPlayer = () => {
   if (!secretIsPlay) {
     secretPlayBtn.classList.add('pause');
 
-    audio.play();
+    audioBirdQuest.play();
     secretIsPlay = true;
   } else {
     secretPlayBtn.classList.remove('pause');
-    audio.pause();
+    audioBirdQuest.pause();
     secretIsPlay = false;
   }
 };
@@ -94,56 +94,72 @@ secretPlayBtn.addEventListener('click', playTrack);
 quizPlayBtn.addEventListener('click', playTrackCard);
 
 setInterval(() => {
-  const curentDuration = audio.duration;
-  let audioDuration;
-
-  if (isNaN(audio.duration)) {
-    audioDuration = '00:00';
-  } else {
-    audioDuration = getTime(curentDuration);
+  if (secretProgressBarCurrent.style.width === '100%') {
+    secretIsPlay = false;
+    secretPlayBtn.classList.remove('pause');
+    secretProgressBarCurrent.style.width = '0%';
+    audioBirdQuest.currentTime = 0;
   }
+  if (secretIsPlay) {
+    const curentDuration = audioBirdQuest.duration;
+    let audioDuration;
 
-  let positionProgress = Math.round((audio.currentTime / curentDuration) * 100);
-  secretProgressBarCurrent.style.width = `${positionProgress}%`;
-  secretTimeTrack.innerHTML = `${getTime(audio.currentTime)} / ${audioDuration}`;
+    if (isNaN(audioBirdQuest.duration)) {
+      audioDuration = '00:00';
+    } else {
+      audioDuration = getTime(curentDuration);
+    }
+
+    let positionProgress = Math.round((audioBirdQuest.currentTime / curentDuration) * 100);
+    secretProgressBarCurrent.style.width = `${positionProgress}%`;
+    secretTimeTrack.innerHTML = `${getTime(audioBirdQuest.currentTime)} / ${audioDuration}`;
+  }
 }, 500);
 
 setInterval(() => {
-  const curentDuration = audioCard.duration;
-  let audioDuration;
-
-  if (isNaN(audioCard.duration)) {
-    audioDuration = '00:00';
-  } else {
-    audioDuration = getTime(curentDuration);
+  if (quizProgressBarCurrent.style.width === '100%') {
+    cardIsPlay = false;
+    quizPlayBtn.classList.remove('pause');
+    quizProgressBarCurrent.style.width = '0%';
+    audioCard.currentTime = 0;
   }
+  if (cardIsPlay) {
+    const curentDuration = audioCard.duration;
+    let audioDuration;
 
-  let positionProgress = Math.round((audioCard.currentTime / curentDuration) * 100);
-  quizProgressBarCurrent.style.width = `${positionProgress}%`;
-  quizTimeTrack.innerHTML = `${getTime(audioCard.currentTime)} / ${audioDuration}`;
+    if (isNaN(audioCard.duration)) {
+      audioDuration = '00:00';
+    } else {
+      audioDuration = getTime(curentDuration);
+    }
+
+    let positionProgress = Math.round((audioCard.currentTime / curentDuration) * 100);
+    quizProgressBarCurrent.style.width = `${positionProgress}%`;
+    quizTimeTrack.innerHTML = `${getTime(audioCard.currentTime)} / ${audioDuration}`;
+  }
 }, 500);
 
 quizProgressDuration.addEventListener('click', (value) => {
   const progressWidth = window.getComputedStyle(quizProgressDuration).width;
-  const duration = (value.offsetX / parseInt(progressWidth)) * audio.duration;
+  const duration = (value.offsetX / parseInt(progressWidth)) * audioCard.duration;
   audioCard.currentTime = duration;
 });
 
 secretProgressDuration.addEventListener('click', (value) => {
   const progressWidth = window.getComputedStyle(secretProgressDuration).width;
-  const duration = (value.offsetX / parseInt(progressWidth)) * audioCard.duration;
-  audio.currentTime = duration;
+  const duration = (value.offsetX / parseInt(progressWidth)) * audioBirdQuest.duration;
+  audioBirdQuest.currentTime = duration;
 });
 
 secretMute.addEventListener('click', () => {
-  if (audio.volume === 0) {
-    audio.volume = secretCurrentLevelVolume;
+  if (audioBirdQuest.volume === 0) {
+    audioBirdQuest.volume = secretCurrentLevelVolume;
     audioCard.volume = secretCurrentLevelVolume;
     secretMute.classList.remove('player-volume__mute');
     secretMute.classList.add('player-volume__unmute');
     secretVolumeLevel.value = secretCurrentLevelVolume * 100;
   } else {
-    audio.volume = 0;
+    audioBirdQuest.volume = 0;
     audioCard.volume = 0;
     secretMute.classList.add('player-volume__mute');
     secretMute.classList.remove('player-volume__unmute');
@@ -159,7 +175,7 @@ secretVolumeLevel.addEventListener('change', () => {
     secretMute.classList.add('player-volume__mute');
     secretMute.classList.remove('player-volume__unmute');
   }
-  audio.volume = secretVolumeLevel.value / 100;
+  audioBirdQuest.volume = secretVolumeLevel.value / 100;
   audioCard.volume = secretVolumeLevel.value / 100;
   secretCurrentLevelVolume = secretVolumeLevel.value / 100;
 });
@@ -190,7 +206,7 @@ let indexCard = -1;
 const clearQuestion = () => {
   secretImg.setAttribute('src', img);
   secretAudio.setAttribute('src', '');
-  audio.src = secretAudio.src;
+  audioBirdQuest.src = secretAudio.src;
   secretTitle.innerHTML = '*****';
   quizOptions.innerHTML = '';
   quizScore.innerHTML = 0;
@@ -208,8 +224,7 @@ const clearQuestion = () => {
 const nextQuestion = () => {
   secretImg.setAttribute('src', img);
   secretAudio.setAttribute('src', '');
-  audio.src = secretAudio.src;
-  audio.src = secretAudio.src;
+  audioBirdQuest.src = secretAudio.src;
   secretTitle.innerHTML = '*****';
   quizOptions.innerHTML = '';
   quizInstruction.setAttribute('style', 'display: flex;');
@@ -224,7 +239,7 @@ const randomNum = () => {
 
 const birdQuiz = () => {
   secretAudio.setAttribute('src', data[currentLevel][secretNum].audio);
-  audio.src = secretAudio.src;
+  audioBirdQuest.src = secretAudio.src;
 };
 
 const showQuestion = () => {
@@ -282,7 +297,7 @@ const checkAnswer = (num) => {
       quizScore.innerHTML = score;
       openSecretBird();
       secretPlayBtn.classList.remove('pause');
-      audio.pause();
+      audioBirdQuest.pause();
       secretIsPlay = false;
       completedLevel = true;
     } else {
@@ -346,7 +361,7 @@ nextLevel.addEventListener('click', () => {
       gamePagination[currentLevel].classList.add('pagination__item-active');
       gamePagination[currentLevel - 1].classList.remove('pagination__item-active');
       secretPlayBtn.classList.remove('pause');
-      audio.pause();
+      audioBirdQuest.pause();
       secretIsPlay = false;
       saveChecked = Array(6).fill(-1);
       startGame();
