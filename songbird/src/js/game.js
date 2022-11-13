@@ -216,6 +216,13 @@ const clearQuestion = () => {
     gamePagination[i].classList.remove('pagination__item-active');
   }
   gamePagination[currentLevel].classList.add('pagination__item-active');
+
+  secretIsPlay = false;
+  secretPlayBtn.classList.remove('pause');
+  secretProgressBarCurrent.style.width = '0%';
+  audioBirdQuest.currentTime = 0;
+  secretTimeTrack.innerHTML = `00:00 / 00:00`;
+
   quizInstruction.setAttribute('style', 'display: flex;');
   quizBody.setAttribute('style', 'display: none;');
   quizDescr.setAttribute('style', 'display: none;');
@@ -227,6 +234,19 @@ const nextQuestion = () => {
   audioBirdQuest.src = secretAudio.src;
   secretTitle.innerHTML = '*****';
   quizOptions.innerHTML = '';
+
+  secretIsPlay = false;
+  secretPlayBtn.classList.remove('pause');
+  secretProgressBarCurrent.style.width = '0%';
+  audioBirdQuest.currentTime = 0;
+  secretTimeTrack.innerHTML = `00:00 / 00:00`;
+
+  cardIsPlay = false;
+  quizPlayBtn.classList.remove('pause');
+  quizProgressBarCurrent.style.width = '0%';
+  audioCard.currentTime = 0;
+  quizTimeTrack.innerHTML = `00:00 / 00:00`;
+
   quizInstruction.setAttribute('style', 'display: flex;');
   quizBody.setAttribute('style', 'display: none;');
   quizDescr.setAttribute('style', 'display: none;');
@@ -272,6 +292,13 @@ const openCardBird = (num) => {
   const quizName = document.querySelector('.quiz__name');
   const quizSpecies = document.querySelector('.quiz__species');
   const quizDescr = document.querySelector('.quiz__descr');
+
+  audioCard.pause();
+  cardIsPlay = false;
+  quizPlayBtn.classList.remove('pause');
+  quizProgressBarCurrent.style.width = '0%';
+  audioCard.currentTime = 0;
+  quizTimeTrack.innerHTML = `00:00 / 00:00`;
 
   quizImg.setAttribute('src', data[currentLevel][indexCard].image);
   quizAudio.setAttribute('src', data[currentLevel][indexCard].audio);
@@ -352,6 +379,10 @@ nextLevel.addEventListener('click', () => {
     currentLevel++;
     nextLevel.classList.remove('button-next');
     indexCard = -1;
+    cardIsPlay = false;
+    audioCard.pause();
+    audioBirdQuest.pause();
+    secretIsPlay = false;
     if (currentLevel === 6) {
       showResult();
       initGame();
@@ -361,8 +392,6 @@ nextLevel.addEventListener('click', () => {
       gamePagination[currentLevel].classList.add('pagination__item-active');
       gamePagination[currentLevel - 1].classList.remove('pagination__item-active');
       secretPlayBtn.classList.remove('pause');
-      audioBirdQuest.pause();
-      secretIsPlay = false;
       saveChecked = Array(6).fill(-1);
       startGame();
     }
