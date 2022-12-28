@@ -1,0 +1,631 @@
+.hero {
+  height: 386px;
+  width: 100%;
+  background-image: url('../../assets/images/Giant_Panda.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.pickAndFeed {
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 180px;
+  background: linear-gradient(
+      315.75deg,
+      rgba(254, 210, 144, 0.7) 30.06%,
+      #febdab 100.95%,
+      rgba(254, 210, 144, 0.7) 106.36%
+    ),
+    linear-gradient(
+      315.75deg,
+      rgba(254, 189, 171, 0.74) 30.06%,
+      rgba(243, 169, 248, 0.66) 50.74%,
+      #e0d8f0 80.49%,
+      #eaf7fe 127.9%,
+      #eaf7fe 149.54%
+    ),
+    linear-gradient(
+      315.75deg,
+      rgba(254, 189, 171, 0.74) 30.06%,
+      rgba(243, 169, 248, 0.66) 50.74%,
+      #e0d8f0 80.49%,
+      #eaf7fe 127.9%,
+      #eaf7fe 149.54%
+    );
+}
+
+.pickAndFeed__h3 {
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.pickAndFeed__descr {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 46px;
+}
+
+.pickAndFeed__h3Sub {
+  color: #fe9013;
+  margin-bottom: 59px;
+}
+
+.pickAndFeed__content {
+  padding: 40px 92px 60px;
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+}
+
+.pickAndFeed__h2 {
+  color: #fe9013;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pickAndFeed__subtitle {
+  margin-bottom: 60px;
+}
+
+.pickAndFeed__pet {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 44px;
+}
+
+.pickAndFeed__pet-block {
+  display: flex;
+  justify-content: space-between;
+  max-width: 532px;
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 215px;
+  margin-right: 229px;
+}
+
+.pickAndFeed__pet-count {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.pickAndFeed__count {
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 80%;
+  text-transform: uppercase;
+  margin-bottom: 11px;
+  margin-top: 52px;
+}
+
+.pickAndFeed__pet-x {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 12px;
+  margin-right: 64px;
+}
+
+.pickAndFeed__amount-descr {
+  margin-bottom: 17px;
+}
+
+.pickAndFeed__amount {
+  margin-bottom: 98px;
+}
+
+.pickAndFeed__amout-bar {
+  position: relative;
+  display: flex;
+  height: 27px;
+  width: 100%;
+  background: #404950;
+  border-radius: 2px;
+  padding-right: 30px;
+  padding-left: 27px;
+  align-items: center;
+}
+
+.pickAndFeed__amount-line {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background: #72828e;
+}
+
+.pickAndFeed__amount-list {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -20px;
+  left: -16px;
+  width: 950px;
+}
+
+.pickAndFeed__amount-item {
+  position: relative;
+  display: flex;
+  width: 40px;
+  height: 40px;
+
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.pickAndFeed__circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background-color: #ffee2e;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.pickAndFeed__amount-item::after {
+  position: absolute;
+  top: 50px;
+  left: -14px;
+  content: attr(data-number);
+  font-weight: 500;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
+  content: url('../../assets/icons/roller_icon.svg');
+  position: absolute;
+}
+.pickAndFeed__amount-item_active.pickAndFeed__amount-item::after {
+  color: #fe9013;
+}
+
+.pickAndFeed__price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-right: 20px;
+}
+
+.pickAndFeed__price-num {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 140%;
+  text-transform: uppercase;
+  color: #333b41;
+}
+.pickAndFeed__amount-form {
+  display: flex;
+  margin-bottom: 26px;
+}
+
+.pickAndFeed__form {
+  position: relative;
+  margin: 0 auto;
+}
+
+.pickAndFeed__amount-dollar {
+  position: absolute;
+  top: 17px;
+  right: 10px;
+}
+
+.pickAndFeed__amount-dollar svg path {
+  fill: #929699;
+}
+
+.pickAndFeed__amount-input {
+  width: 268px;
+  height: 54px;
+  padding: 0 10px;
+  outline: none;
+  border: 1px solid #929699;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  color: #929699;
+}
+
+.pickAndFeed__amount-input:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #333b41;
+  border: 1px solid #ffee2e;
+}
+
+.pickAndFeed__amount-input:hover + .pickAndFeed__amount-dollar svg path {
+  fill: #ffffff;
+}
+
+.pickAndFeed__amount-input:focus {
+  border: 1px solid #4b9200;
+  background-color: transparent;
+  color: #4b9200;
+}
+
+.pickAndFeed__amount-input:invalid {
+  color: #d31414;
+  border: 1px solid #d31414;
+  background-color: transparent;
+}
+
+.pickAndFeed__amount-input:focus + .pickAndFeed__amount-dollar svg path {
+  fill: #4b9200;
+}
+
+.pickAndFeed__amount-input:invalid + .pickAndFeed__amount-dollar svg path {
+  fill: #d31414;
+}
+
+.pickAndFeed__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pickAndFeed__bottom-radios {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  margin-bottom: 32px;
+}
+
+.checkbox {
+  position: relative;
+  margin-left: 9px;
+}
+
+.checkbox:hover {
+  cursor: pointer;
+}
+
+.pickAndFeed__bottom-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.pickAndFeed__bottom-circle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #e47209;
+  border-radius: 50%;
+  margin-left: -25px;
+  top: 2px;
+}
+
+.pickAndFeed__bottom-radio:checked + .pickAndFeed__bottom-circle {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-color: #4b9200;
+  border: 1px solid #4b9200;
+  position: absolute;
+}
+
+.pickAndFeed__bottom-radio:hover {
+  cursor: pointer;
+}
+
+.pickAndFeed__bottom-radio:focus,
+.pickAndFeed__bottom-radio:checked {
+  outline: none;
+  background-color: #4b9200;
+}
+
+.pickAndFeed__bottom-text {
+}
+
+.pickAndFeed__bottom-descr {
+  text-align: center;
+  margin-top: 31px;
+}
+
+@media (max-width: 1220px) {
+  .hero {
+    height: 390px;
+    background-image: url(../../assets/images/panda_bg_1000px.jpg);
+    background-position: -172px;
+  }
+  .pickAndFeed {
+    padding-bottom: 30px;
+  }
+  .pickAndFeed__h3 {
+    width: 778px;
+    margin-bottom: 30px;
+  }
+  .pickAndFeed__h3Sub {
+    margin-bottom: 39px;
+  }
+  .pickAndFeed__content {
+    padding: 20px 44px 44px 47px;
+  }
+  .pickAndFeed__h2 {
+    width: 833px;
+    margin-bottom: 11px;
+  }
+  .pickAndFeed__pet-block {
+    margin-left: 203px;
+    margin-right: 221px;
+  }
+  .pickAndFeed__pet-count {
+    width: 159px;
+  }
+  .pickAndFeed__amount-descr {
+    margin-left: 18px;
+  }
+  .pickAndFeed__amout-bar {
+    margin-left: 18px;
+    padding-left: 12px;
+    padding-right: 15px;
+    width: 810px;
+  }
+  .pickAndFeed__amount-list {
+    width: 820px;
+  }
+  .pickAndFeed__amount-item[data-number='$5000'] {
+    display: none;
+  }
+  .pickAndFeed__amount-item::after {
+    left: 2px;
+  }
+  .footer__donate .footer__nav {
+    margin: 0 62px 9px 180px;
+  }
+}
+
+@media (min-width: 981px) {
+  /* .pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item_active.pickAndFeed__amount-item::after {
+    color: #fe9013;
+  } */
+  .pickAndFeed__amount-item:hover.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item:hover.pickAndFeed__amount-item::after {
+    color: #fe9013;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero {
+    margin-top: 34px;
+    height: 335px;
+    background-position: -273px;
+  }
+  .pickAndFeed {
+    padding-top: 31px;
+    padding-bottom: 46px;
+  }
+  .pickAndFeed__h3 {
+    width: 600px;
+    font-size: 24px;
+    line-height: 120%;
+    margin-bottom: 19px;
+  }
+  .pickAndFeed__descr {
+    margin-bottom: 29px;
+  }
+  .pickAndFeed__h3Sub {
+    margin-bottom: 29px;
+  }
+  .pickAndFeed__content {
+    padding: 30px 0 29px 0;
+  }
+  .pickAndFeed__h2 {
+    width: 463px;
+    margin-left: 69px;
+    margin-bottom: 22px;
+  }
+  .pickAndFeed__subtitle {
+    text-align: center;
+    margin-bottom: 49px;
+  }
+  .pickAndFeed__pet {
+    margin-bottom: 36px;
+  }
+  .pickAndFeed__amount-descr {
+    margin-left: 10px;
+    margin-bottom: 7px;
+  }
+  .pickAndFeed__amout-bar {
+    margin-left: 0;
+    width: 600px;
+  }
+  .pickAndFeed__amount-item[data-number='$2000'],
+  .pickAndFeed__amount-item[data-number='$1000'] {
+    display: none;
+  }
+  /* .pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item_active.pickAndFeed__amount-item::after {
+    color: #fe9013;
+  } */
+
+  .pickAndFeed__amout-bar {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  .pickAndFeed__amount-list {
+    width: 561px;
+  }
+  .pickAndFeed__amount-item:after {
+    left: -6px;
+  }
+  .pickAndFeed__amount-form {
+    margin-bottom: 33px;
+  }
+  .pickAndFeed__amount-input {
+    width: 180px;
+    height: 42px;
+    padding: 0 5px;
+  }
+  .pickAndFeed__amount-dollar {
+    top: 11px;
+  }
+  .pickAndFeed__bottom-radios {
+    margin-bottom: 31px;
+  }
+  .footer__donate {
+    padding: 13px 0 2px;
+  }
+  .footer__donate .footer__body {
+    margin-bottom: 32px;
+  }
+  .footer__donate .footer__nav {
+    margin: 0 62px 10px 0px;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero {
+    height: 187px;
+    background-position: -149px;
+  }
+  .pickAndFeed {
+    padding-bottom: 21px;
+  }
+  .pickAndFeed__h3 {
+    width: 300px;
+  }
+  .pickAndFeed__descr {
+    margin-bottom: 26px;
+  }
+  .pickAndFeed__h3Sub {
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .pickAndFeed__content {
+    padding: 21px 0 18px 0;
+  }
+  .pickAndFeed__h2 {
+    width: 232px;
+    font-size: 24px;
+    margin-left: 34px;
+    margin-bottom: 10px;
+  }
+  .pickAndFeed__subtitle {
+    font-size: 16px;
+    line-height: 140%;
+    margin-bottom: 9px;
+  }
+  .pickAndFeed__pet {
+    margin-bottom: 0;
+  }
+  .pickAndFeed__pet-count {
+    justify-content: start;
+    margin-right: 32px;
+  }
+  .pickAndFeed__pet-block {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .pickAndFeed__pet-count .font {
+    font-size: 9px;
+  }
+  .pickAndFeed__count {
+    font-size: 40px;
+    margin-bottom: 9px;
+    margin-top: 59px;
+  }
+  .pickAndFeed__pet-icon svg {
+    width: 160px;
+    height: 139px;
+  }
+  .pickAndFeed__pet-x svg {
+    width: 8px;
+  }
+  .pickAndFeed__pet-x {
+    margin-right: 10px;
+    top: 5px;
+    right: 26px;
+  }
+  .pickAndFeed__amount {
+    margin-bottom: 50px;
+  }
+  .pickAndFeed__amount-descr {
+    margin-left: 0;
+  }
+  .pickAndFeed__amout-bar {
+    height: 13px;
+    width: 300px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .pickAndFeed__amount-list {
+    width: 280px;
+    left: -11px;
+    top: -9px;
+  }
+  .pickAndFeed__circle {
+    width: 5px;
+    height: 5px;
+  }
+  .pickAndFeed__amount-item {
+    width: 20px;
+    height: 20px;
+  }
+  .pickAndFeed__amount-item.pickAndFeed__amount-item::after {
+    font-size: 13px;
+    top: 35px;
+    left: 8px;
+  }
+  .pickAndFeed__amount-item.pickAndFeed__amount-item::after {
+    font-size: 13px;
+    top: 26px;
+    left: -2px;
+  }
+  .pickAndFeed__amount-item_active:hover.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon-mobile.svg');
+    position: absolute;
+  }
+  .pickAndFeed__amount-item_active.pickAndFeed__amount-item::before {
+    content: url('../../assets/icons/roller_icon-mobile.svg');
+    top: 0;
+    left: 1px;
+  }
+
+  .pickAndFeed__amount-form {
+    margin-bottom: 27px;
+  }
+  .pickAndFeed__bottom-radios {
+    margin-bottom: 29px;
+  }
+  .pickAndFeed__bottom-descr {
+    text-align: start;
+    width: 301px;
+  }
+  .footer__donate {
+    padding: 6px 0 20px;
+  }
+
+  .footer__donate .footer__body {
+    justify-content: center;
+    margin-bottom: 71px;
+  }
+  .footer__donate .footer__nav {
+    margin: 0;
+    margin-top: 80px;
+    margin-left: 11px;
+  }
+}
