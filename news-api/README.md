@@ -1,8 +1,8 @@
-# News API
+# 🗞️ News API
 
 **[News API](https://newsapi.org/)** - это простой HTTP REST API для поиска и извлечения новостей со всего Интернета.
 
-## Information
+## 📜 Information
 1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/migration-newip-to-ts.md
 2. Screenshot: ![image](https://user-images.githubusercontent.com/81454805/206691026-30f03404-4da2-4047-9b0b-463f64bec929.png)
 3. Deploy: https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/news-api/dist/
@@ -13,7 +13,7 @@
 - Добавлена адаптивная верстка
 - Добавлен скролл для ресурсов с меньшим размером экрана
 
-## Application functionality
+## 📌 Application functionality
 
 1. Репозиторий +20
    - [x] Pull request выполнен в соответствии с [требованиями](https://docs.rs.school/#/pull-request-review-process?id=Требования-к-pull-request-pr) +10
@@ -34,7 +34,7 @@
    - [x] Добавлен свой собственный дизайн или улучшения (в ПР должно быть описано что именно) +20
    - [x] У ментора нет замечаний к оформлению +20
 
-## Tech Stack
+## ⚙️ Tech Stack
 
 - HTML5
 - CSS3
@@ -43,6 +43,6 @@
 - ESLint
 - Webpack
 
-## Author
+## 👀 Author
 
 - [@soblvsk](https://www.github.com/soblvsk)
