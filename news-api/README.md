@@ -41,6 +41,7 @@
 - TypeScript
 - Prettier
 - ESLint
+- Webpack
 
 ## Author
 
