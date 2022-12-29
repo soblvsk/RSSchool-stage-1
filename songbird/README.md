@@ -1,16 +1,16 @@
-# SongBird
+# 🐦 SongBird
 
 Songbird - приложение-викторина для распознавания птиц по их голосам.
 
 
-## Information
+## 📜 Information
 1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/songbird/songbird-2022q3.md
 2. Screenshot: ![image](https://user-images.githubusercontent.com/81454805/209959135-1894156f-2dfa-4510-9780-d8d6e1b230a3.png)
 3. Deploy: https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/songbird/
 4. Start Date 08.11.2022 / Done 12.11.2022 / Deadline 22.11.2022
 5. Score: 270/270 
 
-## Application functionality
+## 📌 Application functionality
 
 1. **Вёрстка, дизайн, UI всех трёх страниц приложения +60**
     - [x] Стартовая страница приложения (вёрстка адаптивная - проверяется на ширине от 1920рх до 360рх) +20
@@ -59,13 +59,13 @@ Songbird - приложение-викторина для распознаван
     - [x] Локализация приложения на два языка, выбранный язык хранится в local storage и сохраняется при перезагрузке +10
     - [x] Создание галереи всех птиц приложения c информацией о них (фото, аудио, название, описание) +10
 
-## Tech Stack
+## ⚙️ Tech Stack
 
 - HTML5
 - CSS3
 - JavaScript
 - Webpack
 
-## Author
+## 👀 Author
 
 - [@soblvsk](https://www.github.com/soblvsk)
