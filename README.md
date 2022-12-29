@@ -1,9 +1,9 @@
-# RS SCHOOL STAGE 1
+# 🕹️ RS SCHOOL STAGE 1
 
 Tasks from the course
 
 
-## Deploy
+## 🔨 Deploy
 
 - [Online-Zoo](https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/online-zoo/pages/main/)
 - [Gem-Puzzle (Codejam)](https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/codejam/)
@@ -11,6 +11,6 @@ Tasks from the course
 - [News API](https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/news-api/dist/)
 
 
-## Author
+## 👀 Author
 
 - [@soblvsk](https://www.github.com/soblvsk)
