@@ -1,4 +1,4 @@
-# RSS Gem Puzzle
+# 🧩 RSS Gem Puzzle
 
 You are to implement a classic game — [Gem Puzzle](https://en.wikipedia.org/wiki/15_puzzle) 
 
@@ -6,14 +6,14 @@ You are to implement a classic game — [Gem Puzzle](https://en.wikipedia.org/wi
 
 
 
-## Information
+## 📜 Information
 1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/stage-1/dom-api/codejam-the-gem-puzzle.md
 2. Screenshot: ![image](https://user-images.githubusercontent.com/81454805/209962840-51fcda01-cee5-4294-a660-eb750acf4e02.png)
 3. Deploy: https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/codejam/
 4. Start Date 18.10.2022 / Done 21.10.2022 / Deadline 25.10.2022
 5. Score: 120/120 
 
-## Application functionality
+## 📌 Application functionality
 
 1. Basic scope +30
 
@@ -35,13 +35,13 @@ You are to implement a classic game — [Gem Puzzle](https://en.wikipedia.org/wi
     - [x] animation of tiles' movement on frame: `+15`
     - [x] tiles can be dragged with use of mouse: `+15`
     
-## Tech Stack
+## ⚙️ Tech Stack
 
 - HTML5
 - Sass/SCSS
 - JavaScript
 - Webpack
     
-## Author
+## 👀 Author
 
 - [@soblvsk](https://www.github.com/soblvsk)
