@@ -29,6 +29,17 @@ Online-zoo - это платформа, где собрана информаци
 **[Неделя 3](https://github.com/rolling-scopes-school/tasks/blob/master/stage1/stream2/online-zoo/README.md#неделя-3)**: Добавление дополнительного функционала.
 - на этом этапе на ранее сверстанные страницы добавляется дополнительный функционал: меню, слайдер, пагинация, попап.
 
+## Tech Stack
+
+- HTML5
+
+- CSS3
+
+- JavaScript
+
+
+ 
+
 ## Author
 
 - [@soblvsk](https://www.github.com/soblvsk)
