@@ -35,6 +35,13 @@ You are to implement a classic game — [Gem Puzzle](https://en.wikipedia.org/wi
     - [x] animation of tiles' movement on frame: `+15`
     - [x] tiles can be dragged with use of mouse: `+15`
     
+## Tech Stack
+
+- HTML5
+- Sass/SCSS
+- JavaScript
+- Webpack
+    
 ## Author
 
 - [@soblvsk](https://www.github.com/soblvsk)
