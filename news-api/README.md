@@ -34,6 +34,14 @@
    - [x] Добавлен свой собственный дизайн или улучшения (в ПР должно быть описано что именно) +20
    - [x] У ментора нет замечаний к оформлению +20
 
+## Tech Stack
+
+- HTML5
+- CSS3
+- TypeScript
+- Prettier
+- ESLint
+
 ## Author
 
 - [@soblvsk](https://www.github.com/soblvsk)
