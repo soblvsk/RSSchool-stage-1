@@ -32,8 +32,8 @@ class ControllerGarage {
       const target = e.target as HTMLElement;
       if (target.closest('.btn-edit')) await this.editCar(target);
       if (target.closest('.btn-delete')) await this.removeCar(target);
-      if (target.closest('.btn-car-reset')) await this.resetCar(Number(target.dataset.id));
-      if (target.closest('.btn-car-start')) await this.startCar(Number(target.dataset.id));
+      if (target.closest('.btn-car-reset')) await this.resetCar(Number(target.dataset.id)).catch(() => {});
+      if (target.closest('.btn-car-start')) await this.startCar(Number(target.dataset.id)).catch(() => {});
       if (target.closest('.btn-create')) await this.createCar();
       if (target.closest('.btn-generate')) await this.generateCars();
       if (target.closest('.btn-race-start')) await this.startRace();
