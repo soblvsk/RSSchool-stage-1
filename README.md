@@ -1,4 +1,4 @@
-# 🕹️ RS SCHOOL STAGE 1
+# 🕹️ RS SCHOOL STAGE 1 | 2
 
 Tasks from the course
 
