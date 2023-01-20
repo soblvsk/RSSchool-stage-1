@@ -1,40 +1,347 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+  <title>TypeScript</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>TypeScript</h1>
+        <div>
+          <img width="400" height="400" data-src="./assets/catCoding.gif" alt="Cat coding">
+        </div>
+        <a href="https://github.com/soblvsk">Author: @soblvsk</a>
+      </section>
+      <section>
+        <section>
+          <h2>What is TypeScript?</h2>
+          <img width="341" height="480" data-src="./assets/image_slide_1.jpg">
+        </section>
+        <section>
+          <h4 style="color: yellow">JavaScript</h4>
+          <pre>
+            <code class="javascript" data-trim>
+              const obj = { width: 10, height: 15 };
+              // Why is this NaN? Spelling is hard!
+              const area = obj.width * obj.heigth;
+					  </code>
+          </pre>
+          <h4>TypeScript</h4>
+          <pre>
+            <code class="typescript" data-trim>
+              const obj = { width: 10, height: 15 };
+              const area = obj.width * obj.heigth;
+              /* Error: Property 'heigth' does not exist on type
+              '{ width: number; height: number; }'. Did you mean 'height'? */
+					  </code>
+          </pre>
+        </section>
+        <section>
+          <h4 style="color: yellow">JavaScript</h4>
+          <pre>
+            <code class="javascript" data-trim>
+              const sum = (a, b) => a + b;
+
+              sum(1, 2); // 3
+              sum('1', '2'); // '12'
+              sum([], []); // ''
+					  </code>
+          </pre>
+          <h4>TypeScript</h4>
+          <pre>
+            <code class="typescript" data-trim>
+              const sum = (a: number, b: number) => a + b;
+
+              sum(1, 2); // 3
+              sum('1', '2');
+              /* Argument of type 'string' is not assignable to 
+              parameter of type 'number'. */
+              sum([], []);
+              /* Argument of type 'never[]' is not assignable to
+              parameter of type 'number'. */
+					  </code>
+          </pre>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>How to install TypeScript?</h2>
+          <img data-src="./assets/fire.gif" alt="Elmo and fire">
+        </section>
+        <section>
+          <div>
+            <pre>
+              <code class="npm" data-trim>
+                npm install -g typescript
+              </code>
+            </pre>
+          </div>
+          <div class="fragment fade-up">
+            <pre>
+              <code class="npm" data-trim>
+                tsc index.ts
+              </code>
+            </pre>
+          </div>
+          <div class="fragment fade-up">
+            <pre>
+              <code class="npm" data-trim>
+                tsc --init
+              </code>
+            </pre>
+          </div>
+          <div class="fragment fade-up">
+            <a href="https://www.typescriptlang.org/tsconfig">TSConfig Reference</a>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Basic Types</h2>
+          <pre data-id="code-animation">
+            <code class="typescript" data-trim data-line-numbers="|1|2|3|4|5|7-8|10-12|14|15">
+              const x : number = 5;
+              const stroke : string = 'Hello, World!';
+              const isValid : boolean = true;
+              const student : null = null;
+              const result : undefined = undefined;
+
+              const listOne : number[] = [1, 2, 3, 4];
+              const listTwo : Array&lt;string&gt; = ['one', 'two', 'three', 'four'];
+
+              function getGreeting() : void {
+                console.log('Hello!');
+              }
+
+              const user: [string, number] = ['Vitaliy', 20];
+              const unknownValue: unknown = 3;
+            </code>
+          </pre>
+        </section>
+        <section>
+          <pre>
+            <code class="typescript" data-trim>
+                let x; // any
+                x = 5;
+                x = 'hi';
+                x = true;
+            </code>
+          </pre>
+          <img width="336" height="367" data-src="./assets/image_slide_3.jpg"
+            alt="soldier being shot by an arrow saying 'any'">
+        </section>
+        <section>
+          <pre>
+            <code class="typescript" data-trim>
+              const testFunc = (a: number, b: number): boolean => a === b;
+
+              testFunc(1, 1); // true
+              testFunc(1, 2); // false
+            </code>
+          </pre>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Type & Interface</h2>
+          <pre data-id="code-animation">
+            <code class="typescript" data-trim data-line-numbers="|1-5|7-21|12">
+              type Count = number;
+              type Stock = 'Yes' | 'No';
+
+              const count : Count = 12;
+              const stock : Stock = 'Yes';
+
+              interface Product {
+                id : number;
+                brand: string;
+                price: number;
+                count: number;
+                stock: Stock;
+              };
+
+              const NikeSneakers: Product {
+                id: 1,
+                brand: 'Nike',
+                price: 8990,
+                count: 123,
+                stock: 'Yes',
+              };
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h4>Union & Intersection</h4>
+          <pre data-id="code-animation">
+            <code class="typescript" data-trim data-line-numbers="|1-2|4-13">
+              type CarBrands = 'BMW' | 'Audi' | 'Toyota';
+              const carBrand : CarBrands = 'Audi';
+              
+              type Point2D = {
+                x: number;
+                y: number;
+              };
+              type Point3D = Point2D & {
+                z: number;
+              }
+
+              let point2d : Point2D = { x: 0, y: 0};
+              let point3d : Point3D = { x: 0, y: 0, z: 0};
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h4>Difference Type & Interface</h4>
+          <pre data-id="code-animation">
+            <code class="typescript" data-trim data-line-numbers="|1-19|21-47|49-53">
+              interface User1 {
+                name: string;
+              };
+              interface User1 {
+                age: number;
+              };
+
+              const user : User1 = {
+                name: 'Vitaliy',
+                age: 20,
+              };
+              
+              type User2 {
+                name: string;
+              };
+              type User2 {
+                age: number;
+              };
+              /* Duplicate identifier 'User'. */
+
+              interface User3 {
+                name: string;
+                age: number;
+              };
+              interface Admin3 extends User3 {
+                isAdmin: boolean;
+              };
+
+              const Vitaliy : Admin3 = {
+                name: 'Vitaliy',
+                age: 20,
+                isAdmin = true;
+              };
+
+              type User4 {
+                name: string;
+                age: number;
+              };
+              type Admin4 = User4 & {
+                isAdmin: boolean;
+              };
+
+              const Max : Admin4 = {
+                name: 'Masx',
+                age: 18,
+                isAdmin = true;
+              };
+
+              interface Moderator {
+                readonly id : number;
+                name: string;
+                address?: string; // string | undefined
+              };
+            </code>
+          </pre>
+        </section>
+      </section>
+      <section>
+        <h2>Assertions</h2>
+        <pre>
+          <code class="typescript" data-trim>
+            const el = document.getElementById("canvas") as HTMLCanvasElement;
+            /* === */
+            const el = &lt;HTMLCanvasElement&gt;document.getElementById("canvas");
+          </code>
+        </pre>
+      </section>
+      <section>
+        <h2>Generic</h2>
+        <pre data-id="code-animation">
+          <code class="typescript" data-trim data-line-numbers="|1-21|23-36">
+            interface &lt;T, S&gt; {
+              a: T;
+              b: S;
+            };
+
+            type B &lt;T, S&gt; = {
+              a: T;
+              b: S;
+            };
+          
+            const a: A&lt;number, string&gt; = {
+              a: 10,
+              b: "lalaka"
+            };
+          
+            const b: B&lt;boolean, {a: number}&gt; = {
+              a: true,
+              b: {
+                  a: 10
+              }
+            };
+
+            function foo&lt;T&gt;(): void {
+              const a: T = ...
+            };
+
+            const foo = &lt;T&gt;(): void => {
+              const a: T = ...
+            }
+            function foo&lt;T, S&gt;(a: T): S {
+              ...
+            }
+          
+            const bar = &lt;T, S&gt;(a: T): S {
+              ...
+            }
+          </code>
+        </pre>
+        <a class="fragment fade-up"
+          href="https://www.typescriptlang.org/docs/handbook/utility-types.html">Utility Types</a>
+      </section>
+      <section>
+        <h1>The end</h1>
+        <img data-src="./assets/the end.gif" alt="The End">
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
 </html>
