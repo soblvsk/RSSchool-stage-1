@@ -2,6 +2,7 @@ import { EngineCar } from '../constants/interfaces';
 
 class Engine {
   private url: string;
+
   private engine: string;
 
   constructor() {
@@ -11,12 +12,12 @@ class Engine {
 
   async startEngine(engineId: number): Promise<EngineCar> {
     const response = await fetch(`${this.engine}?id=${engineId}&status=started`, { method: 'PATCH' });
-    return await response.json();
+    return (await response.json()) as EngineCar;
   }
 
   async stopEngine(engineId: number): Promise<EngineCar> {
     const response = await fetch(`${this.engine}?id=${engineId}&status=stopped`, { method: 'PATCH' });
-    return await response.json();
+    return (await response.json()) as EngineCar;
   }
 
   async driveEngine(engineId: number): Promise<number> {

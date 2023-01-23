@@ -1,7 +1,7 @@
 import Engine from '../api/Engine';
 import Garage from '../api/Garage';
 import Winners from '../api/Winners';
-import { EngineCar } from '../constants/interfaces';
+import { EngineCar, UpdateCar } from '../constants/interfaces';
 import { getRandomCars, getRandomName, store } from '../constants/utils';
 import garageControlsComponent from '../views/components/GarageControls/GarageControls';
 import garagePaginationComponent from '../views/components/GaragePagination/GaragePagination';
@@ -10,10 +10,15 @@ import ControllerWinners from './ControllerWinners';
 
 class ControllerGarage {
   private garage: Garage;
+
   private winners: Winners;
+
   private winnersController: ControllerWinners;
+
   private engine: Engine;
+
   private animations: { [index: number]: number };
+
   private carRace: { [index: number]: boolean };
 
   constructor() {
@@ -28,23 +33,25 @@ class ControllerGarage {
   async start() {
     await this.loading();
 
-    (document.querySelector('.garage') as HTMLDivElement).addEventListener('click', async (e) => {
+    const garage = document.querySelector('.garage') as HTMLDivElement;
+    garage.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
-      if (target.closest('.btn-edit')) await this.editCar(target);
-      if (target.closest('.btn-delete')) await this.removeCar(target);
-      if (target.closest('.btn-car-reset')) await this.resetCar(Number(target.dataset.id)).catch(() => {});
-      if (target.closest('.btn-car-start')) await this.startCar(Number(target.dataset.id)).catch(() => {});
-      if (target.closest('.btn-create')) await this.createCar();
-      if (target.closest('.btn-generate')) await this.generateCars();
-      if (target.closest('.btn-race-start')) await this.startRace();
-      if (target.closest('.btn-race-reset')) await this.resetRace();
-      if (target.closest('.btn-garage-prev')) await this.pagination('prev');
-      if (target.closest('.btn-garage-next')) await this.pagination('next');
+      if (target.closest('.btn-edit')) this.editCar(target);
+      if (target.closest('.btn-delete')) this.removeCar(target);
+      if (target.closest('.btn-car-reset')) this.resetCar(Number(target.dataset.id)).catch(() => {});
+      if (target.closest('.btn-car-start')) this.startCar(Number(target.dataset.id)).catch(() => {});
+      if (target.closest('.btn-create')) this.createCar();
+      if (target.closest('.btn-generate')) this.generateCars();
+      if (target.closest('.btn-race-start')) this.startRace();
+      if (target.closest('.btn-race-reset')) this.resetRace();
+      if (target.closest('.btn-garage-prev')) this.pagination('prev');
+      if (target.closest('.btn-garage-next')) this.pagination('next');
     });
 
-    (document.querySelector('.modal__overlay') as HTMLDivElement).addEventListener('click', async () => {
+    const modalOverlay = document.querySelector('.modal__overlay') as HTMLDivElement;
+    modalOverlay.addEventListener('click', () => {
       this.closeModal();
-      await this.winnersController.loading();
+      this.winnersController.loading();
     });
   }
 
@@ -52,7 +59,7 @@ class ControllerGarage {
     const cars = await this.garage.getCars(store.garagePage);
     store.countPagesGarage = Math.ceil(Number(cars.count) / 7);
 
-    garageControlsComponent.render(cars);
+    garageControlsComponent.render(cars.count);
     garageRacingComponent.render(cars.items);
     garagePaginationComponent.render(store.garagePage, store.countPagesGarage);
 
@@ -72,6 +79,15 @@ class ControllerGarage {
     await this.loading();
   }
 
+  async updateCar(id: number, name: string, color: string) {
+    await this.garage.updateCar(id, {
+      name,
+      color,
+    });
+
+    await this.loading();
+  }
+
   async editCar(target: HTMLElement) {
     let updateBtn = document.querySelector('.btn-create') as HTMLButtonElement;
     const nameCreateCar = document.querySelector('.create__name-input') as HTMLInputElement;
@@ -88,12 +104,11 @@ class ControllerGarage {
       updateBtn.innerHTML = 'Update Car';
     }
 
-    nameCreateCar.value = `${car?.name}`;
-    colorCreateCar.value = `${car?.color}`;
+    nameCreateCar.value = `${car ? car.name : ''}`;
+    colorCreateCar.value = `${car ? car.color : '#000000'}`;
 
-    updateBtn.addEventListener('click', async () => {
-      await this.garage.updateCar(carId, { name: nameCreateCar.value, color: colorCreateCar.value });
-      await this.loading();
+    updateBtn.addEventListener('click', () => {
+      this.updateCar(carId, nameCreateCar.value, colorCreateCar.value);
     });
   }
 
@@ -103,7 +118,10 @@ class ControllerGarage {
 
     if (!nameCreateCar.value) nameCreateCar.value = getRandomName();
 
-    await this.garage.createCar({ name: nameCreateCar.value, color: colorCreateCar.value });
+    await this.garage.createCar({
+      name: nameCreateCar.value,
+      color: colorCreateCar.value,
+    });
     nameCreateCar.value = '';
     await this.loading();
   }
@@ -115,7 +133,7 @@ class ControllerGarage {
     generateBtn.innerHTML = 'Generating';
 
     const cars = getRandomCars();
-    await Promise.all(cars.map((element) => this.garage.createCar(element)));
+    await Promise.all(cars.map((element: UpdateCar) => this.garage.createCar(element)));
 
     generateBtn.disabled = false;
     generateBtn.innerHTML = 'Generate cars';
@@ -131,7 +149,7 @@ class ControllerGarage {
       if (store.garagePage === 1) btnPrev.disabled = true;
 
       if (store.garagePage > 1) {
-        store.garagePage--;
+        store.garagePage -= 1;
         btnNext.disabled = false;
       }
       await this.loading();
@@ -139,7 +157,7 @@ class ControllerGarage {
       if (store.garagePage === store.countPagesGarage) btnNext.disabled = true;
 
       if (store.garagePage < store.countPagesGarage) {
-        store.garagePage++;
+        store.garagePage += 1;
         btnPrev.disabled = false;
       }
       await this.loading();
@@ -148,17 +166,17 @@ class ControllerGarage {
 
   async animateCar(carId: number, raceCar: HTMLDivElement, duration: number, trackLength: number) {
     let start: number;
+    const carItem = raceCar;
 
     const animation = (time: number) => {
       let progress = (time - start) / duration;
       if (progress > 1) progress = 1;
+
       const length = trackLength * progress;
-      raceCar.style.left = `${length}px`;
+      carItem.style.left = `${length}px`;
 
       if (progress < 1) {
-        this.animations[carId] = requestAnimationFrame((time) => {
-          animation(time);
-        });
+        this.animations[carId] = requestAnimationFrame(animation);
       }
     };
 
@@ -174,7 +192,6 @@ class ControllerGarage {
       cancelAnimationFrame(this.animations[carId]);
       return false;
     }
-
     return true;
   }
 
@@ -195,39 +212,38 @@ class ControllerGarage {
     const result = await this.animateCar(carId, raceCar, duration, lengthRoad);
 
     if (result) return { carId, duration };
-    else return Promise.reject();
+    return Promise.reject();
   }
 
   async startRace() {
     const startRaceBtn = document.querySelector('.btn-race-start') as HTMLButtonElement;
+    const resetRaceBtn = document.querySelector('.btn-race-reset') as HTMLButtonElement;
     const modal = document.querySelector('.modal') as HTMLDivElement;
 
     startRaceBtn.disabled = true;
+    resetRaceBtn.disabled = false;
 
     const carsData = await this.garage.getCars(store.garagePage);
-    Promise.any(carsData.items.map((element) => this.startCar(element.id)))
-      .then((result) => {
-        if (this.carRace[result.carId] === true) {
-          const carName = carsData.items.find((element) => element.id === result.carId)?.name;
-          modal.classList.add('modal-open');
-          this.openModal(Math.floor(result.duration) / 1000, carName);
-          this.addWinner(result.carId, Math.floor(result.duration) / 1000);
-        }
-      })
-      .catch(() => {})
-      .finally(() => {});
+    Promise.any(carsData.items.map((element) => this.startCar(element.id))).then((result) => {
+      if (this.carRace[result.carId] === true) {
+        const carName = carsData.items.find((element) => element.id === result.carId);
+        modal.classList.add('modal-open');
+        this.openModal(Math.floor(result.duration) / 1000, carName ? carName.name : '');
+        this.addWinner(result.carId, Math.floor(result.duration) / 1000);
+      }
+    });
   }
 
-  openModal(duration: number, name?: string) {
+  openModal(duration: number, name: string) {
     document.body.style.overflow = 'hidden';
     const winCar = document.querySelector('.win-car') as HTMLDivElement;
     winCar.innerHTML = `${name} <br>Time: ${duration} sec`;
   }
 
   closeModal() {
+    document.body.style.overflow = '';
     const modal = document.querySelector('.modal') as HTMLDivElement;
     modal.classList.remove('modal-open');
-    document.body.style.overflow = '';
   }
 
   async addWinner(carId: number, timeCar: number) {
@@ -246,11 +262,11 @@ class ControllerGarage {
     const stopBtn = document.querySelector(`.btn-car-reset[data-id="${carId}"]`) as HTMLButtonElement;
     const raceCar = document.querySelector(`.car-racing__item[data-id="${carId}"]`) as HTMLDivElement;
 
+    await this.engine.stopEngine(carId);
     this.carRace[carId] = false;
+
     stopBtn.disabled = true;
     startBtn.disabled = false;
-
-    await this.engine.stopEngine(carId);
     cancelAnimationFrame(this.animations[carId]);
     raceCar.style.left = '0px';
   }
@@ -258,8 +274,10 @@ class ControllerGarage {
   async resetRace() {
     const startRaceBtn = document.querySelector('.btn-race-start') as HTMLButtonElement;
     const carsData = await this.garage.getCars(store.garagePage);
-    startRaceBtn.disabled = false;
-    carsData.items.forEach((element) => this.resetCar(element.id));
+    const carsDataPromise = carsData.items.map((element) => this.resetCar(element.id));
+    Promise.all(carsDataPromise).finally(() => {
+      startRaceBtn.disabled = false;
+    });
   }
 }
 

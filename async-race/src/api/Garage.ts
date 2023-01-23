@@ -2,6 +2,7 @@ import { Car, CarsData } from '../constants/interfaces';
 
 class Garage {
   private url: string;
+
   private garage: string;
 
   constructor() {
@@ -11,29 +12,28 @@ class Garage {
 
   async getCar(carId: number): Promise<Car> {
     const response = await fetch(`${this.garage}/${carId}`);
-    return await response.json();
+    return (await response.json()) as Car;
   }
 
   async getCars(page: number, limit = 7): Promise<CarsData> {
     const response = await fetch(`${this.garage}?_page=${page}&_limit=${limit}`);
     return {
-      items: await response.json(),
-      count: response.headers.get('X-Total-Count'),
+      items: (await response.json()) as Car[],
+      count: response.headers.get('X-Total-Count') as string,
     };
   }
 
-  async updateCar(carId: number, body: { name: string; color: string }): Promise<Car> {
-    const response = await fetch(`${this.garage}/${carId}`, {
+  async updateCar(carId: number, body: { name: string; color: string }): Promise<void> {
+    await fetch(`${this.garage}/${carId}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(body),
     });
-    return await response.json();
   }
 
-  async createCar(body: { name: string; color: string }): Promise<Car> {
+  async createCar(body: { name: string; color: string }) {
     const response = await fetch(this.garage, {
       method: 'POST',
       headers: {
@@ -42,14 +42,13 @@ class Garage {
       body: JSON.stringify(body),
     });
 
-    return await response.json();
+    return (await response.json()) as Car;
   }
 
-  async deleteCar(carId: number): Promise<Car> {
-    const response = await fetch(`${this.garage}/${carId}`, {
+  async deleteCar(carId: number): Promise<void> {
+    await fetch(`${this.garage}/${carId}`, {
       method: 'DELETE',
     });
-    return await response.json();
   }
 }
 

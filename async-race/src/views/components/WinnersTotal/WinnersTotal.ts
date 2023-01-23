@@ -1,11 +1,9 @@
-import { WinnersData } from '../../../constants/interfaces';
-
 class WinnersTotal {
-  render(data: WinnersData) {
+  render(data: string) {
     const total = document.querySelector('.winners__total') as HTMLDivElement;
 
     total.innerHTML = `
-    <p class="font_S">Winners: <span clas="cars-winner">${data.count}</span></p>
+    <p class="font_S">Winners: <span clas="cars-winner">${data}</span></p>
   `;
   }
 }

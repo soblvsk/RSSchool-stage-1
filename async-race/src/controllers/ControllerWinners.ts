@@ -14,12 +14,12 @@ class ControllerWinners {
   async start() {
     await this.loading();
 
-    (document.querySelector('.winners') as HTMLDivElement).addEventListener('click', async (e) => {
+    (document.querySelector('.winners') as HTMLDivElement).addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
-      if (target.closest('.table-sort-wins')) await this.sortWins();
-      if (target.closest('.table-sort-time')) await this.sortTime();
-      if (target.closest('.btn-winners-prev')) await this.pagination('prev');
-      if (target.closest('.btn-winners-next')) await this.pagination('next');
+      if (target.closest('.table-sort-wins')) this.sortWins();
+      if (target.closest('.table-sort-time')) this.sortTime();
+      if (target.closest('.btn-winners-prev')) this.pagination('prev');
+      if (target.closest('.btn-winners-next')) this.pagination('next');
     });
   }
 
@@ -29,7 +29,7 @@ class ControllerWinners {
 
     const index = 1 + (store.countPagesWinners - 1) * 10;
     winnersCarsComponent.render(winners, index);
-    winnersTotalComponent.render(winners);
+    winnersTotalComponent.render(winners.count);
     winnersPaginationComponent.render(store.winnersPage, store.countPagesWinners);
 
     const btnPrev = document.querySelector('.btn-winners-prev') as HTMLButtonElement;
@@ -80,14 +80,14 @@ class ControllerWinners {
     if (btn === 'prev') {
       if (store.winnersPage === 1) btnPrev.disabled = true;
       if (store.winnersPage > 1) {
-        store.winnersPage--;
+        store.winnersPage -= 1;
         btnNext.disabled = false;
         await this.loading();
       }
     } else {
       if (store.winnersPage === store.countPagesWinners) btnNext.disabled = true;
       if (store.winnersPage < store.countPagesWinners) {
-        store.winnersPage++;
+        store.winnersPage += 1;
         btnPrev.disabled = false;
         await this.loading();
       }

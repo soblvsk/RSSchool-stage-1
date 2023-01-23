@@ -4,7 +4,7 @@ export interface Car {
   color: string;
 }
 
-export interface updateCar {
+export interface UpdateCar {
   name: string;
   color: string;
 }
@@ -13,18 +13,18 @@ export interface Winner {
   id: number;
   time: string;
   wins: string;
-  name?: string;
+  name: string;
   color: string;
 }
 
 export interface CarsData {
   items: Car[];
-  count: string | null;
+  count: string;
 }
 
 export interface WinnersData {
   items: Winner[];
-  count: string | null;
+  count: string;
 }
 
 export interface EngineCar {

@@ -15,6 +15,7 @@ class WinnersCars {
     <td class="table__item">${winner.time}</td>
     `;
   }
+
   render(data: WinnersData, index: number) {
     const tableBody = document.querySelector('.table__body') as HTMLTableElement;
 

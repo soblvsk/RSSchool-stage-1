@@ -4,7 +4,7 @@ class WinnersPagination {
 
     pagination.innerHTML = `
     <button class="btn btn_L btn_primary btn-winners-prev" disabled>Prev</button>
-    <div class="font_M">${count === 0 ? `0 / 0` : `${page} / ${count}`}</div>
+    <div class="font_M">${count === 0 ? '0 / 0' : `${page} / ${count}`}</div>
     <button class="btn btn_L btn_primary btn-winners-next">Next</button>
   `;
   }
