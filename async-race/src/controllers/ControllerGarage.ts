@@ -76,6 +76,10 @@ class ControllerGarage {
     const carId = Number(target.dataset.id);
     await this.garage.deleteCar(carId);
     await this.winners.deleteWinner(carId);
+    const cars = await this.garage.getCars(store.garagePage);
+
+    if (!cars.items.length && store.garagePage !== 1) store.garagePage -= 1;
+
     await this.loading();
   }
 
@@ -221,17 +225,24 @@ class ControllerGarage {
     const modal = document.querySelector('.modal') as HTMLDivElement;
 
     startRaceBtn.disabled = true;
-    resetRaceBtn.disabled = false;
+    resetRaceBtn.disabled = true;
 
     const carsData = await this.garage.getCars(store.garagePage);
-    Promise.any(carsData.items.map((element) => this.startCar(element.id))).then((result) => {
-      if (this.carRace[result.carId] === true) {
-        const carName = carsData.items.find((element) => element.id === result.carId);
-        modal.classList.add('modal-open');
-        this.openModal(Math.floor(result.duration) / 1000, carName ? carName.name : '');
-        this.addWinner(result.carId, Math.floor(result.duration) / 1000);
-      }
-    });
+    Promise.any(carsData.items.map((element) => this.startCar(element.id)))
+      .then((result) => {
+        if (this.carRace[result.carId] === true) {
+          const carName = carsData.items.find((element) => element.id === result.carId);
+          modal.classList.add('modal-open');
+          this.openModal(Math.floor(result.duration) / 1000, carName ? carName.name : '');
+          this.addWinner(result.carId, Math.floor(result.duration) / 1000);
+        }
+      })
+      .catch(() => {
+        console.log('All cars have broken');
+      })
+      .finally(() => {
+        resetRaceBtn.disabled = false;
+      });
   }
 
   openModal(duration: number, name: string) {
@@ -273,6 +284,8 @@ class ControllerGarage {
 
   async resetRace() {
     const startRaceBtn = document.querySelector('.btn-race-start') as HTMLButtonElement;
+    const resetRaceBtn = document.querySelector('.btn-race-reset') as HTMLButtonElement;
+    resetRaceBtn.disabled = true;
     const carsData = await this.garage.getCars(store.garagePage);
     const carsDataPromise = carsData.items.map((element) => this.resetCar(element.id));
     Promise.all(carsDataPromise).finally(() => {
