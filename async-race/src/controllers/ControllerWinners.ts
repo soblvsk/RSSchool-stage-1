@@ -27,7 +27,7 @@ class ControllerWinners {
     const winners = await this.winners.getWinnersData(store.winnersPage, store.sort, store.order);
     store.countPagesWinners = Math.ceil(Number(winners.count) / 10);
 
-    const index = 1 + (store.countPagesWinners - 1) * 10;
+    const index = 1 + (store.winnersPage - 1) * 10;
     winnersCarsComponent.render(winners, index);
     winnersTotalComponent.render(winners.count);
     winnersPaginationComponent.render(store.winnersPage, store.countPagesWinners);
