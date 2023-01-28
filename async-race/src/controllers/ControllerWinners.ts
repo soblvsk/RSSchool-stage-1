@@ -1,5 +1,6 @@
 import Winners from '../api/Winners';
-import { store } from '../constants/utils';
+import constants from '../core/constants';
+import store from '../core/store';
 import winnersCarsComponent from '../views/components/WinnersCars/WinnersCars';
 import winnersPaginationComponent from '../views/components/WinnersPagination/WinnersPagination';
 import winnersTotalComponent from '../views/components/WinnersTotal/WinnersTotal';
@@ -25,11 +26,11 @@ class ControllerWinners {
 
   async loading() {
     const winners = await this.winners.getWinnersData(store.winnersPage, store.sort, store.order);
-    store.countPagesWinners = Math.ceil(Number(winners.count) / 10);
+    store.countPagesWinners = Math.ceil(Number(winners.totalCount) / constants.winnersInPage);
 
-    const index = 1 + (store.winnersPage - 1) * 10;
+    const index = 1 + (store.winnersPage - 1) * constants.winnersInPage;
     winnersCarsComponent.render(winners, index);
-    winnersTotalComponent.render(winners.count);
+    winnersTotalComponent.render(winners.totalCount);
     winnersPaginationComponent.render(store.winnersPage, store.countPagesWinners);
 
     const btnPrev = document.querySelector('.btn-winners-prev') as HTMLButtonElement;
@@ -37,7 +38,7 @@ class ControllerWinners {
     else btnPrev.disabled = false;
 
     const btnNext = document.querySelector('.btn-winners-next') as HTMLButtonElement;
-    if (Number(winners.count) > store.countPagesWinners) btnNext.disabled = false;
+    if (Number(winners.totalCount) > store.countPagesWinners) btnNext.disabled = false;
     if (store.winnersPage >= store.countPagesWinners) btnNext.disabled = true;
 
     const winsArrow = document.querySelector('.wins-arrow') as HTMLImageElement;

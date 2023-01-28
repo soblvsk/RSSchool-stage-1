@@ -1,4 +1,5 @@
-import { Order, Sort, Winner, WinnersData } from '../constants/interfaces';
+import constants from '../core/constants';
+import { Order, Sort, Winner, WinnersData } from '../core/interfaces';
 import Garage from './Garage';
 
 class Winners {
@@ -9,7 +10,7 @@ class Winners {
   private garage: Garage;
 
   constructor() {
-    this.url = 'http://127.0.0.1:3000';
+    this.url = constants.url;
     this.winners = `${this.url}/winners`;
     this.garage = new Garage();
   }
@@ -36,7 +37,7 @@ class Winners {
 
     return {
       items: winners,
-      count: response.headers.get('X-Total-Count') as string,
+      totalCount: response.headers.get('X-Total-Count') as string,
     };
   }
 

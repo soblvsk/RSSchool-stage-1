@@ -1,4 +1,5 @@
-import { Car, CarsData } from '../constants/interfaces';
+import constants from '../core/constants';
+import { Car, CarsData } from '../core/interfaces';
 
 class Garage {
   private url: string;
@@ -6,7 +7,7 @@ class Garage {
   private garage: string;
 
   constructor() {
-    this.url = 'http://127.0.0.1:3000';
+    this.url = constants.url;
     this.garage = `${this.url}/garage`;
   }
 
@@ -19,7 +20,7 @@ class Garage {
     const response = await fetch(`${this.garage}?_page=${page}&_limit=${limit}`);
     return {
       items: (await response.json()) as Car[],
-      count: response.headers.get('X-Total-Count') as string,
+      totalCount: response.headers.get('X-Total-Count') as string,
     };
   }
 

@@ -1,12 +1,14 @@
 import Engine from '../api/Engine';
 import Garage from '../api/Garage';
 import Winners from '../api/Winners';
-import { EngineCar, UpdateCar } from '../constants/interfaces';
-import { getRandomCars, getRandomName, store } from '../constants/utils';
+import { EngineCar, UpdateCar } from '../core/interfaces';
+import { getRandomCars, getRandomName } from '../core/utils';
+import store from '../core/store';
 import garageControlsComponent from '../views/components/GarageControls/GarageControls';
 import garagePaginationComponent from '../views/components/GaragePagination/GaragePagination';
 import garageRacingComponent from '../views/components/GarageRacing/GarageRacing';
 import ControllerWinners from './ControllerWinners';
+import constants from '../core/constants';
 
 class ControllerGarage {
   private garage: Garage;
@@ -38,8 +40,14 @@ class ControllerGarage {
       const target = e.target as HTMLElement;
       if (target.closest('.btn-edit')) this.editCar(target);
       if (target.closest('.btn-delete')) this.removeCar(target);
-      if (target.closest('.btn-car-reset')) this.resetCar(Number(target.dataset.id)).catch(() => {});
-      if (target.closest('.btn-car-start')) this.startCar(Number(target.dataset.id)).catch(() => {});
+      if (target.closest('.btn-car-reset'))
+        this.resetCar(Number(target.dataset.id)).catch((err) => {
+          console.log(err);
+        });
+      if (target.closest('.btn-car-start'))
+        this.startCar(Number(target.dataset.id)).catch((err) => {
+          console.log(err);
+        });
       if (target.closest('.btn-create')) this.createCar();
       if (target.closest('.btn-generate')) this.generateCars();
       if (target.closest('.btn-race-start')) this.startRace();
@@ -57,9 +65,9 @@ class ControllerGarage {
 
   async loading() {
     const cars = await this.garage.getCars(store.garagePage);
-    store.countPagesGarage = Math.ceil(Number(cars.count) / 7);
+    store.countPagesGarage = Math.ceil(Number(cars.totalCount) / constants.carsInPage);
 
-    garageControlsComponent.render(cars.count);
+    garageControlsComponent.render(cars.totalCount);
     garageRacingComponent.render(cars.items);
     garagePaginationComponent.render(store.garagePage, store.countPagesGarage);
 
@@ -68,7 +76,7 @@ class ControllerGarage {
     else btnPrev.disabled = false;
 
     const btnNext = document.querySelector('.btn-garage-next') as HTMLButtonElement;
-    if (Number(cars.count) > store.countPagesGarage) btnNext.disabled = false;
+    if (Number(cars.totalCount) > store.countPagesGarage) btnNext.disabled = false;
     if (store.garagePage >= store.countPagesGarage) btnNext.disabled = true;
   }
 

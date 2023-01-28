@@ -1,4 +1,4 @@
-import { Store, UpdateCar } from './interfaces';
+import { UpdateCar } from './interfaces';
 
 export function drawCar(color: string) {
   return `
@@ -189,12 +189,3 @@ export function getRandomCars() {
   Array.from({ length: 100 }, () => cars.push({ name: getRandomName(), color: getRandomColor() }));
   return cars;
 }
-
-export const store: Store = {
-  garagePage: 1,
-  countPagesGarage: 1,
-  winnersPage: 1,
-  countPagesWinners: 1,
-  sort: 'time',
-  order: 'ASC',
-};

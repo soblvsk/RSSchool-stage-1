@@ -1,4 +1,5 @@
-import { EngineCar } from '../constants/interfaces';
+import constants from '../core/constants';
+import { EngineCar } from '../core/interfaces';
 
 class Engine {
   private url: string;
@@ -6,7 +7,7 @@ class Engine {
   private engine: string;
 
   constructor() {
-    this.url = 'http://127.0.0.1:3000';
+    this.url = constants.url;
     this.engine = `${this.url}/engine`;
   }
 

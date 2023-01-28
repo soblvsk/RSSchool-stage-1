@@ -19,12 +19,12 @@ export interface Winner {
 
 export interface CarsData {
   items: Car[];
-  count: string;
+  totalCount: string;
 }
 
 export interface WinnersData {
   items: Winner[];
-  count: string;
+  totalCount: string;
 }
 
 export interface EngineCar {

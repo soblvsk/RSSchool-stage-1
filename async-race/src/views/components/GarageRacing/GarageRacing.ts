@@ -1,5 +1,5 @@
-import { Car } from '../../../constants/interfaces';
-import { drawCar } from '../../../constants/utils';
+import { Car } from '../../../core/interfaces';
+import { drawCar } from '../../../core/utils';
 
 class GarageRacing {
   drawCarItem(car: Car) {

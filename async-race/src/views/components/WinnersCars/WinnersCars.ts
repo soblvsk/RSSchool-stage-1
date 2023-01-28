@@ -1,5 +1,5 @@
-import { Winner, WinnersData } from '../../../constants/interfaces';
-import { drawCar } from '../../../constants/utils';
+import { Winner, WinnersData } from '../../../core/interfaces';
+import { drawCar } from '../../../core/utils';
 
 class WinnersCars {
   drawWinnerItem(winner: Winner, index: number) {
