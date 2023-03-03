@@ -1,4 +1,4 @@
-# 🧩 RSS Gem Puzzle
+# [🧩 RSS Gem Puzzle](https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/codejam/)
 
 You are to implement a classic game — [Gem Puzzle](https://en.wikipedia.org/wiki/15_puzzle) 
 
