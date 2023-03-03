@@ -1,4 +1,4 @@
-# 🗞️ News API
+# [🗞️ News API](https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/news-api/dist/)
 
 **[News API](https://newsapi.org/)** - это простой HTTP REST API для поиска и извлечения новостей со всего Интернета.
 
