@@ -1,4 +1,4 @@
-# 🐦 SongBird
+# [🐦 SongBird](https://rolling-scopes-school.github.io/soblvsk-JSFE2022Q3/songbird/)
 
 Songbird - приложение-викторина для распознавания птиц по их голосам.
 
