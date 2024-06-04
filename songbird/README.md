@@ -61,8 +61,8 @@ Songbird - приложение-викторина для распознаван
 
 ## ⚙️ Tech Stack
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
 - Webpack
 
