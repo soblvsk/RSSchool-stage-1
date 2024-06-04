@@ -57,8 +57,8 @@ Async Race - SPA приложение для управления коллекц
 
 ## ⚙️ Tech Stack
 
-- HTML5
-- Sass/SCSS
+- HTML
+- SCSS
 - TypeScript
 - Prettier
 - ESLint
