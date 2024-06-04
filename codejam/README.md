@@ -37,8 +37,8 @@ You are to implement a classic game — [Gem Puzzle](https://en.wikipedia.org/wi
     
 ## ⚙️ Tech Stack
 
-- HTML5
-- Sass/SCSS
+- HTML
+- SCSS
 - JavaScript
 - Webpack
     
