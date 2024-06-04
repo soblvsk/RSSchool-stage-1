@@ -31,8 +31,8 @@ Online-zoo - это платформа, где собрана информаци
 
 ## ⚙️ Tech Stack
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
  
 
